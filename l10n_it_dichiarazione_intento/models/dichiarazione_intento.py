@@ -29,7 +29,8 @@ class DichiarazioneIntentoYearlyLimit(models.Model):
             dichiarazioni = self.env['dichiarazione.intento'].search([
                 ('date_start', '>=', date_start),
                 ('date_end', '<=', date_end),
-                ('type', '=', 'in'), ])
+                ('type', '=', 'in')
+            ])
             record.used_amount = sum([d.limit_amount for d in dichiarazioni])
 
 
@@ -99,8 +100,8 @@ class DichiarazioneIntento(models.Model):
             dichiarazioni = self.search([
                 ('date_start', '>=', date_start),
                 ('date_end', '<=', date_end),
-                ('type', '=', 'in'),
-                ])
+                ('type', '=', 'in')
+            ])
             actual_limit_total = sum([d.limit_amount for d in dichiarazioni]) \
                 + values['limit_amount']
             if actual_limit_total > plafond.limit_amount:
@@ -253,6 +254,7 @@ class DichiarazioneIntentoLine(models.Model):
     invoice_id = fields.Many2one('account.invoice', string='Invoice')
     date_invoice = fields.Date(
         related='invoice_id.date_invoice',
-        string='Date Invoice'
+        string='Date Invoice',
+        # readonly=True
     )
     currency_id = fields.Many2one('res.currency', string='Currency')

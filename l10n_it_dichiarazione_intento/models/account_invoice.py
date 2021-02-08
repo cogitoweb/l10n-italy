@@ -16,13 +16,14 @@ class AccountInvoice(models.Model):
 
     @api.multi
     def _set_fiscal_position(self):
+        DichiarazioneIntento = self.env['dichiarazione.intento']
+
         for invoice in self:
             if invoice.partner_id and invoice.type:
-                all_dichiarazioni = self.env[
-                    'dichiarazione.intento'].get_all_for_partner(
+                all_dichiarazioni = DichiarazioneIntento.get_all_for_partner(
                     invoice.type.split('_')[0],
                     invoice.partner_id.commercial_partner_id.id
-                    )
+                )
                 if not all_dichiarazioni:
                     return
                 valid_date = fields.Date.from_string(invoice.date_invoice) \
@@ -33,7 +34,7 @@ class AccountInvoice(models.Model):
                     fields.Date.from_string(d.date_start)
                     <= valid_date
                     <= fields.Date.from_string(d.date_end)
-                    )
+                )
 
                 if dichiarazioni_valide:
                     invoice.fiscal_position_id = \
@@ -171,7 +172,7 @@ class AccountInvoice(models.Model):
                             'invoice_id': invoice.id,
                             'base_amount': invoice.amount_untaxed,
                             'currency_id': invoice.currency_id.id,
-                            })]
+                        })]
                         # ----- Link dichiarazione to invoice
                         invoice.dichiarazione_intento_ids = [
                             (4, dichiarazione.id)]
@@ -189,14 +190,9 @@ class AccountInvoice(models.Model):
                             invoice.comment += (
                                 "\n\nVostra dichiarazione d'intento "
                                 "nr %s del %s, "
-                                "nostro protocollo nr %s del %s, "
-                                "protocollo telematico nr %s."
                                 % (
-                                    dichiarazione.partner_document_number,
-                                    partner_date,
-                                    dichiarazione.number,
-                                    dichiarazione_date,
-                                    dichiarazione.telematic_protocol
+                                    dichiarazione.telematic_protocol,
+                                    partner_date
                                 )
                             )
 
