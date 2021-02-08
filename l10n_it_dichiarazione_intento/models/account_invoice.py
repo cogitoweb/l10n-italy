@@ -189,7 +189,7 @@ class AccountInvoice(models.Model):
                                 dichiarazione_date, locale=locale)
                             invoice.comment += (
                                 "\n\nVostra dichiarazione d'intento "
-                                "nr %s del %s, "
+                                "nr %s del %s."
                                 % (
                                     dichiarazione.telematic_protocol,
                                     partner_date
