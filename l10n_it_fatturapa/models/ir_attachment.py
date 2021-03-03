@@ -117,7 +117,7 @@ class Attachment(models.Model):
 
     def get_fattura_elettronica_preview(self):
 
-        invoice_attachment_obj = self.env[self.res_model]browse(self.res_id)
+        invoice_attachment_obj = self.env[self.res_model].browse(self.res_id)
         xsl_path = get_module_resource('l10n_it_fatturapa', 'data', self.env.user.company_id.fatturapa_preview_style)
 
         if invoice_attachment_obj.simplified_invoice:
