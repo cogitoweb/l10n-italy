@@ -38,6 +38,11 @@ class FatturaPAAttachmentIn(models.Model):
     e_invoice_validation_message = fields.Text(
         compute='_compute_e_invoice_validation_error')
 
+    simplified_invoice = fields.Boolean(
+        string='Simplified invoice',
+        default=False
+    )
+
     _sql_constraints = [(
         'ftpa_attachment_in_name_uniq',
         'unique(att_name)',
