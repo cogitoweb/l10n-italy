@@ -117,7 +117,7 @@ class Attachment(models.Model):
 
     def get_fattura_elettronica_preview(self):
 
-        # attachemnt invoice in
+        # attachemnt invoice
         invoice_attachment_obj = self.search([
             ('ir_attachment_id', '=', self.id)
         ], limit=1)
