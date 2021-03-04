@@ -122,6 +122,7 @@ class Attachment(models.Model):
             ('ir_attachment_id', '=', self.id)
         ], limit=1)
 
+        xsl_path = False
         # semplified invoice
         if invoice_attachment_obj and invoice_attachment_obj.simplified_invoice:
             xsl_path = get_module_resource('l10n_it_fatturapa', 'data', 'fatturasemplificata_v1.0.xsl')
