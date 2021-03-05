@@ -27,7 +27,7 @@ class AccountInvoice(models.Model):
                 if not all_dichiarazioni:
                     return
                 valid_date = fields.Date.from_string(invoice.date_invoice) \
-                    or fields.Date.context_today(invoice)
+                    or fields.Date.from_string(fields.Date.today())
 
                 dichiarazioni_valide = all_dichiarazioni.filtered(
                     lambda d:
