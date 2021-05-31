@@ -1,6 +1,7 @@
 #
 # Copyright (c) 2019, Link IT srl, Italy. All rights reserved.
 #
+# -*- coding: utf-8 -*-
 
 import logging
 
