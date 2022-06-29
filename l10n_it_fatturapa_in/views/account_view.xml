@@ -70,6 +70,7 @@
                 <field name="invoices_total" sum="Bills Total"/>
                 <field name="registered"/>
                 <field name="in_invoice_ids"/>
+                <field name="is_self_invoice" />
             </tree>
         </field>
     </record>
@@ -80,7 +81,7 @@
             <search>
                 <field name="name"/>
                 <field name="xml_supplier_id"/>
-                <filter name="to_register" string="To Register" domain="[('registered','=',False)]"/>
+                <filter name="to_register" string="To Register" domain="[('registered','=',False), ('is_self_invoice','=',False)]"/>
             </search>
         </field>
     </record>
