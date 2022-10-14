@@ -39,9 +39,9 @@
                     <div class="page">
 
                         <div id="distinta_number" class="row with_bord" style="padding: 2px;">
-                            <p class="distinta_number">
-                                Ricevute Bancarie list nr <span t-esc="o.name or 'Bozza'"/> del <span t-field="o.registration_date"/>
-                            </p>
+                            <h4 class="distinta_number" style="margin:0;padding:0">
+                                <strong>Ricevute Bancarie nr <span t-esc="o.name or 'Bozza'"/> del <span t-field="o.registration_date"/></strong>
+                            </h4>
                         </div>
 
                         <div class="row">
@@ -73,7 +73,7 @@
                                 </thead>
                                 <tbody>
                                     <t t-set="tot_amount" t-value="0" />
-                                    <tr t-foreach="o.line_ids" t-as="line">
+                                    <tr t-foreach="o.line_ids.sorted(key=lambda b: (b.partner_id.name, b.due_date))" t-as="line">
                                         <td>
                                             <p><span t-field="line.sequence" /></p>
                                         </td>
