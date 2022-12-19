@@ -405,8 +405,8 @@ class AccountInvoice(models.Model):
         res = super(AccountInvoice, self).invoice_validate()
         fp = self.fiscal_position_id
         rc_type = fp and fp.rc_type_id
-        if rc_type and rc_type.method == 'selfinvoice'\
-                and self.amount_total:
+        if rc_type and rc_type.method == 'selfinvoice':
+            #    and self.amount_total:  # 2zx -> remove check on total amount to always allow RC generation
             if not rc_type.with_supplier_self_invoice:
                 self.generate_self_invoice()
             else:
