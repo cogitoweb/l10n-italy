@@ -226,6 +226,9 @@ class AccountInvoice(models.Model):
             }
 
     def reconcile_supplier_invoice(self):
+        if not self.amount_total:
+            return
+        
         rc_type = self.fiscal_position_id.rc_type_id
 
         move_model = self.env['account.move']
@@ -276,6 +279,9 @@ class AccountInvoice(models.Model):
             inv_lines_to_rec.reconcile()
 
     def reconcile_rc_invoice(self):
+        if not self.amount_total:
+            return {'line_ids': []}
+        
         rc_type = self.fiscal_position_id.rc_type_id
         move_model = self.env['account.move']
         rc_payment_data = self.rc_payment_vals(rc_type)
