@@ -4,6 +4,8 @@ import logging
 from odoo.modules.module import get_module_resource
 from lxml import etree
 
+from odoo.addons.base.ir.ir_mail_server import extract_rfc2822_addresses
+
 _logger = logging.getLogger(__name__)
 _logger.setLevel(logging.DEBUG)
 
@@ -117,6 +119,17 @@ def CreateFromDocument(xml_string):
                         element_path, element.text, e)
                     problems.append(msg)
                     _logger.warn(msg)
+
+    # handle special cases like '<Email>contatto: AMMINISTRAZIONE@TNTITALY.IT</Email>'
+    # by trying to parse the real email and change the tag content.
+    for element in root.findall(".//Email"):
+        valid_emails = extract_rfc2822_addresses(element.text)
+        if valid_emails and valid_emails[0] != element.text:
+            element_path = tree.getpath(element)
+            msg = 'Removed invalid email <%s> from node %s' % (element.text, element_path)
+            problems.append(msg)
+            _logger.warn(msg)
+            element.text = valid_emails[0]
 
     fatturapa = _CreateFromDocument(etree.tostring(root))
     setattr(fatturapa, '_xmldoctor', problems)
