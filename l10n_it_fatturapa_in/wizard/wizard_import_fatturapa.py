@@ -572,7 +572,7 @@ class WizardImportFatturapa(models.TransientModel):
                       '%s and nature %s found. Tax %s with lower priority has '
                       'been set on invoice lines.')
                     % (AliquotaIVA, Natura,
-                       account_taxes[0].description))
+                       account_taxes[0].description or account_taxes[0].name))
         else:
             account_taxes = account_tax_model.search(
                 [
