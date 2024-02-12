@@ -13,12 +13,12 @@
 
     'author': "Marco Calcagni, Gianmarco Conte, Link IT Europe Srl, "
               "Odoo Community Association (OCA)",
-    'website': 'https://github.com/OCA/l10n-italy/tree/12.0/'
-               'l10n_it_delivery_note_base',
-    'version': '12.0.1.0.0',
+    'website': 'https://github.com/OCA/l10n-italy'
+               '/tree/12.0/l10n_it_delivery_note_base',
+    'version': '12.0.1.0.1',
     'category': "Localization",
     'license': 'AGPL-3',
-    'maintainers': ['As400it', 'Byloth'],
+    'maintainers': ['As400it'],
     'depends': ['base'],
     'data': [
         'data/delivery_note_data.xml',
