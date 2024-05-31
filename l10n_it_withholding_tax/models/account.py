@@ -8,6 +8,9 @@ from odoo.exceptions import ValidationError
 from odoo.fields import first
 from odoo.tools import float_compare
 
+import logging
+_logger = logging.getLogger(__name__)
+
 
 class AccountFullReconcile(models.Model):
     _inherit = "account.full.reconcile"
@@ -319,21 +322,38 @@ class AccountMoveLine(models.Model):
         # unreconciled also the wt account move
         for account_move_line in self:
             rec_move_ids = self.env['account.partial.reconcile']
-            domain = [('withholding_tax_generated_by_move_id', '=',
-                       account_move_line.move_id.id)]
+            domain = [('withholding_tax_generated_by_move_id', '=', account_move_line.move_id.id)]
             wt_mls = self.env['account.move.line'].search(domain)
+
             # Avoid wt move not in due state
-            domain = [('wt_account_move_id', 'in',
-                       wt_mls.mapped('move_id').ids)]
+            domain = [('wt_account_move_id', 'in', wt_mls.mapped('move_id').ids)]
             wt_moves = self.env['withholding.tax.move'].search(domain)
             wt_moves.check_unlink()
+
+            reconciled_move_lines = account_move_line._get_reconciled_lines()
+            reconciled_moves = reconciled_move_lines.mapped('move_id')
 
             for wt_ml in wt_mls:
                 rec_move_ids += wt_ml.matched_debit_ids
                 rec_move_ids += wt_ml.matched_credit_ids
-            rec_move_ids.unlink()
+
+            # [cgt-edit] unreconcile only selected move lines
+            filtered_rec_move_ids = rec_move_ids.filtered(lambda r:
+                r.debit_move_id.id in reconciled_move_lines.ids or
+                r.credit_move_id.id in reconciled_move_lines.ids)
+
+            _logger.info(f"rec_move_ids {rec_move_ids}")
+            _logger.info(f"filtered rec_move_ids {filtered_rec_move_ids}")
+            filtered_rec_move_ids.unlink()
+
+            # [cgt-edit] unreconcile only selected move lines
+            wt_moves = wt_mls.mapped('move_id')
+            filtered_wt_moves = wt_moves.filtered(lambda r: r.id in reconciled_moves.ids)
+            _logger.info(f"wt_moves {wt_moves}")
+            _logger.info(f"wt_moves intersect {filtered_wt_moves}")
+
             # Delete wt move
-            for wt_move in wt_mls.mapped('move_id'):
+            for wt_move in filtered_wt_moves:
                 wt_move.button_cancel()
                 wt_move.unlink()
 
