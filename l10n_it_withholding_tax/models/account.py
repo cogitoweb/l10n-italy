@@ -357,7 +357,7 @@ class AccountMoveLine(models.Model):
                 wt_move.button_cancel()
                 wt_move.unlink()
 
-        return super(AccountMoveLine, self).remove_move_reconcile()
+        return super(AccountMoveLine, self.exists()).remove_move_reconcile()
 
 
 class AccountReconciliation(models.AbstractModel):
