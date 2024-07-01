@@ -5,6 +5,8 @@ from odoo import models, api, fields
 from odoo.tools import float_is_zero, float_round
 from odoo.tools.translate import _
 from odoo.exceptions import UserError
+from datetime import datetime
+from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT as DATETIME_FORMAT
 
 from odoo.addons.l10n_it_fatturapa.bindings import fatturapa
 from odoo.addons.base_iban.models.res_partner_bank import pretty_iban
@@ -1138,11 +1140,10 @@ class WizardImportFatturapa(models.TransientModel):
         if company.in_invoice_registration_date == 'rec_date':
             invoice_data["date"] = e_invoice_received_date
         elif company.in_invoice_registration_date == 'rec_date_em':
-            new_date = e_invoice_received_date
-            _logger.info(new_date)
+            new_date = datetime.strptime(e_invoice_received_date, DATETIME_FORMAT)
             end_of_month = calendar.monthrange(new_date.year, new_date.month)[1]
             new_date = new_date.replace(day=end_of_month)
-            invoice_data["date"] = new_date
+            invoice_data["date"] = new_date.strftime(DATETIME_FORMAT)
         else:
             invoice_data["date"] = e_invoice_date
 
