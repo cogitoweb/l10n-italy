@@ -1139,6 +1139,7 @@ class WizardImportFatturapa(models.TransientModel):
             invoice_data["date"] = e_invoice_received_date
         elif company.in_invoice_registration_date == 'rec_date_em':
             new_date = e_invoice_received_date
+            _logger.info(new_date)
             end_of_month = calendar.monthrange(new_date.year, new_date.month)[1]
             new_date = new_date.replace(day=end_of_month)
             invoice_data["date"] = new_date
