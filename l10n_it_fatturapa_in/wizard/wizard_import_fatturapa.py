@@ -1133,6 +1133,8 @@ class WizardImportFatturapa(models.TransientModel):
     
     def set_registration_date(self, FatturaBody, invoice_data, e_invoice_received_date, e_invoice_date):
 
+        company = self.env.user.company_id
+
         if company.in_invoice_registration_date == 'rec_date':
             invoice_data["date"] = e_invoice_received_date
         elif company.in_invoice_registration_date == 'rec_date_em':
