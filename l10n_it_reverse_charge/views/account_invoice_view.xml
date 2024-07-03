@@ -49,7 +49,7 @@
                        context="{'form_view_ref': 'account.supplier_invoice_form'}"/>
             </field>
             <field name="move_name" position="attributes">
-                <attribute name="attrs">{'invisible': ['|', ('state', '!=', 'draft'), '&amp;', ('state', 'in', ('draft','cancel')), ('rc_purchase_invoice_id', '!=', False)]}</attribute>
+                <attribute name="attrs">{'invisible': ['|', ('state', '!=', 'draft'), '&amp;', ('state', 'not in', ('draft','cancel')), ('rc_purchase_invoice_id', '=', False)]}</attribute>
             </field>
         </field>
     </record>
