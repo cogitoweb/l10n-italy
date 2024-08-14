@@ -1092,7 +1092,7 @@ msgstr "Aliquota IVA"
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_account_config_settings_in_invoice_registration_date
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_res_company_in_invoice_registration_date
 msgid "Vendor invoice registration default date"
-msgstr ""
+msgstr "Data predefinita per la registrazione delle fatture fornitore"
 
 #. module: l10n_it_fatturapa_in
 #: code:addons/l10n_it_fatturapa_in/models/account.py:211

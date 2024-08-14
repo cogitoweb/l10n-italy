@@ -5,9 +5,13 @@ from odoo import models, api, fields
 from odoo.tools import float_is_zero, float_round
 from odoo.tools.translate import _
 from odoo.exceptions import UserError
+from datetime import datetime
+from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT as DATETIME_FORMAT
 
 from odoo.addons.l10n_it_fatturapa.bindings import fatturapa
 from odoo.addons.base_iban.models.res_partner_bank import pretty_iban
+
+import calendar
 
 _logger = logging.getLogger(__name__)
 
@@ -895,8 +899,7 @@ class WizardImportFatturapa(models.TransientModel):
 
         invoice_data = {
             'e_invoice_received_date': e_invoice_received_date,
-            'date': e_invoice_received_date
-            if company.in_invoice_registration_date == 'rec_date' else e_invoice_date,
+            'date': False,
             'fiscal_document_type_id': docType_id,
             'sender': fatt.FatturaElettronicaHeader.SoggettoEmittente or False,
             'account_id': pay_acc_id,
@@ -912,6 +915,8 @@ class WizardImportFatturapa(models.TransientModel):
             'fatturapa_attachment_in_id': fatturapa_attachment.id,
             'comment': comment
         }
+
+        self.set_registration_date(FatturaBody, invoice_data, e_invoice_received_date, e_invoice_date)
 
         # 2.1.1.10
         self.set_efatt_rounding(FatturaBody, invoice_data)
@@ -1127,6 +1132,20 @@ class WizardImportFatturapa(models.TransientModel):
             if line_vals:
                 for line in line_vals:
                     self.env['account.invoice.line'].create(line)
+    
+    def set_registration_date(self, FatturaBody, invoice_data, e_invoice_received_date, e_invoice_date):
+
+        company = self.env.user.company_id
+
+        if company.in_invoice_registration_date == 'rec_date':
+            invoice_data["date"] = e_invoice_received_date
+        elif company.in_invoice_registration_date == 'rec_date_em':
+            new_date = datetime.strptime(e_invoice_received_date, DATETIME_FORMAT)
+            end_of_month = calendar.monthrange(new_date.year, new_date.month)[1]
+            new_date = new_date.replace(day=end_of_month)
+            invoice_data["date"] = new_date.strftime(DATETIME_FORMAT)
+        else:
+            invoice_data["date"] = e_invoice_date
 
     def set_efatt_rounding(self, FatturaBody, invoice_data):
         if FatturaBody.DatiGenerali.DatiGeneraliDocumento.Arrotondamento:
