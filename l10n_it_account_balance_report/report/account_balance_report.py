@@ -121,7 +121,9 @@ class ReportAccountBalanceReport(models.TransientModel):
         r_sec, r_name = cols['right']['section'], cols['right']['name']
         valid_sections = [l_sec, r_sec]
 
-        for trial_acc_line in self.trial_balance_id.account_ids:
+        account_ids = sorted(self.trial_balance_id.account_ids, key=lambda x: x.code)
+
+        for trial_acc_line in account_ids:
             section = self.get_report_section(
                 trial_acc_line.account_id, trial_acc_line.account_group_id
             )
