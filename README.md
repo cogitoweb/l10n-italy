@@ -23,7 +23,7 @@ addon | version | maintainers | summary
 --- | --- | --- | ---
 [account_invoice_report_ddt_group](account_invoice_report_ddt_group/) | 12.0.1.0.5 |  | Raggruppa le righe fattura per DDT che le ha generate, mostrando eventualmente i lotti/seriali
 [account_vat_period_end_statement](account_vat_period_end_statement/) | 12.0.1.8.1 |  | Allow to create the 'VAT Statement'.
-[assets_management](assets_management/) | 12.0.1.0.1 |  | Gestione Cespiti
+[assets_management](assets_management/) | 12.0.1.0.2 |  | Gestione Cespiti
 [currency_rate_update_boi](currency_rate_update_boi/) | 12.0.1.0.0 | [![eLBati](https://github.com/eLBati.png?size=30px)](https://github.com/eLBati) | Update exchange rates using www.bancaditalia.it
 [fiscal_epos_print](fiscal_epos_print/) | 12.0.2.0.2 | [![eLBati](https://github.com/eLBati.png?size=30px)](https://github.com/eLBati) | ePOS-Print XML Fiscal Printer Driver - Stampanti Epson compatibili: FP81II, FP90III
 [fiscal_epos_print_fiscalcode](fiscal_epos_print_fiscalcode/) | 12.0.1.1.0 |  | Consente di includere il codice fiscale negli scontrini
@@ -35,7 +35,7 @@ addon | version | maintainers | summary
 [l10n_it_account_stamp](l10n_it_account_stamp/) | 12.0.1.4.0 |  | Gestione automatica dell'imposta di bollo
 [l10n_it_account_stamp_ddt](l10n_it_account_stamp_ddt/) | 12.0.1.0.1 | [![tafaRU](https://github.com/tafaRU.png?size=30px)](https://github.com/tafaRU) | Modulo ponte tra imposta di bollo e DDT
 [l10n_it_account_stamp_sale](l10n_it_account_stamp_sale/) | 12.0.1.0.2 | [![tafaRU](https://github.com/tafaRU.png?size=30px)](https://github.com/tafaRU) | Modulo ponte tra imposta di bollo e vendite
-[l10n_it_account_tax_kind](l10n_it_account_tax_kind/) | 12.0.2.1.0 |  | Italian Localisation - Natura delle aliquote IVA
+[l10n_it_account_tax_kind](l10n_it_account_tax_kind/) | 12.0.2.1.1 |  | Italian Localisation - Natura delle aliquote IVA
 [l10n_it_asset_history_import](l10n_it_asset_history_import/) | 12.0.1.0.0 |  | Cespiti: importazione storico dati
 [l10n_it_ateco](l10n_it_ateco/) | 12.0.1.0.1 |  | ITA - Codici Ateco
 [l10n_it_bill_of_entry](l10n_it_bill_of_entry/) | 12.0.1.0.1 |  | ITA - Bolle doganali
@@ -55,24 +55,25 @@ addon | version | maintainers | summary
 [l10n_it_esigibilita_iva](l10n_it_esigibilita_iva/) | 12.0.2.0.0 |  | Italian Localization - Esigibilita' IVA
 [l10n_it_fatturapa](l10n_it_fatturapa/) | 12.0.3.0.3 |  | Fatture elettroniche
 [l10n_it_fatturapa_export_zip](l10n_it_fatturapa_export_zip/) | 12.0.1.0.1 | [![sergiocorato](https://github.com/sergiocorato.png?size=30px)](https://github.com/sergiocorato) | Permette di esportare in uno ZIP diversi file XML di fatture elettroniche
-[l10n_it_fatturapa_in](l10n_it_fatturapa_in/) | 12.0.3.1.8 |  | Ricezione fatture elettroniche
+[l10n_it_fatturapa_in](l10n_it_fatturapa_in/) | 12.0.3.1.9 |  | Ricezione fatture elettroniche
 [l10n_it_fatturapa_in_purchase](l10n_it_fatturapa_in_purchase/) | 12.0.1.0.2 |  | Modulo ponte tra ricezione fatture elettroniche e acquisti
 [l10n_it_fatturapa_in_rc](l10n_it_fatturapa_in_rc/) | 12.0.1.2.0 | [![sergiocorato](https://github.com/sergiocorato.png?size=30px)](https://github.com/sergiocorato) | Modulo ponte tra e-fattura in acquisto e inversione contabile
-[l10n_it_fatturapa_out](l10n_it_fatturapa_out/) | 12.0.3.2.2 |  | Emissione fatture elettroniche
+[l10n_it_fatturapa_out](l10n_it_fatturapa_out/) | 12.0.3.2.3 |  | Emissione fatture elettroniche
 [l10n_it_fatturapa_out_ddt](l10n_it_fatturapa_out_ddt/) | 12.0.1.4.1 | [![eLBati](https://github.com/eLBati.png?size=30px)](https://github.com/eLBati) | Modulo ponte tra emissione fatture elettroniche e DDT
 [l10n_it_fatturapa_out_di](l10n_it_fatturapa_out_di/) | 12.0.1.0.1 |  | Dichiarazioni d'intento in fatturapa
+[l10n_it_fatturapa_out_fd](l10n_it_fatturapa_out_fd/) | 12.0.1.0.0 |  | Emissione di fattura elettronica con sconto fisso
 [l10n_it_fatturapa_out_oss](l10n_it_fatturapa_out_oss/) | 12.0.1.0.0 |  | OSS in fatturapa
 [l10n_it_fatturapa_out_rc](l10n_it_fatturapa_out_rc/) | 12.0.1.1.2 | [![eLBati](https://github.com/eLBati.png?size=30px)](https://github.com/eLBati) | Integrazione l10n_it_fatturapa_out e l10n_it_reverse_charge
 [l10n_it_fatturapa_out_stamp](l10n_it_fatturapa_out_stamp/) | 12.0.2.0.0 | [![eLBati](https://github.com/eLBati.png?size=30px)](https://github.com/eLBati) | Modulo ponte tra emissione fatture elettroniche e imposta di bollo
 [l10n_it_fatturapa_out_triple_discount](l10n_it_fatturapa_out_triple_discount/) | 12.0.2.0.1 |  | Modulo ponte tra emissione fatture elettroniche e sconto triplo
-[l10n_it_fatturapa_out_welfare](l10n_it_fatturapa_out_welfare/) | 12.0.1.0.1 |  | Registrazione della cassa previdenziale nelle fatture elettroniche in uscita
+[l10n_it_fatturapa_out_welfare](l10n_it_fatturapa_out_welfare/) | 12.0.1.0.2 |  | Registrazione della cassa previdenziale nelle fatture elettroniche in uscita
 [l10n_it_fatturapa_out_wt](l10n_it_fatturapa_out_wt/) | 12.0.2.0.1 |  | Modulo ponte tra emissione fatture elettroniche e ritenute.
-[l10n_it_fatturapa_pec](l10n_it_fatturapa_pec/) | 12.0.2.2.0 |  | Invio fatture elettroniche tramite PEC
+[l10n_it_fatturapa_pec](l10n_it_fatturapa_pec/) | 12.0.2.2.1 |  | Invio fatture elettroniche tramite PEC
 [l10n_it_fatturapa_sale](l10n_it_fatturapa_sale/) | 12.0.1.1.4 |  | Aggiunge alcuni dati per la fatturazione elettronica nell'ordine di vendita
 [l10n_it_fatturapa_sdicoop](l10n_it_fatturapa_sdicoop/) | 12.0.2.2.1 |  | Invio fatture elettroniche tramite SDICoop
 [l10n_it_fiscal_document_type](l10n_it_fiscal_document_type/) | 12.0.2.2.0 |  | Italian Localization - Tipi di documento fiscale per dichiarativi
 [l10n_it_fiscal_payment_term](l10n_it_fiscal_payment_term/) | 12.0.2.0.0 |  | Condizioni di pagamento delle fatture elettroniche
-[l10n_it_fiscalcode](l10n_it_fiscalcode/) | 12.0.1.1.4 |  | Italian Localization - Fiscal Code
+[l10n_it_fiscalcode](l10n_it_fiscalcode/) | 12.0.1.1.5 |  | Italian Localization - Fiscal Code
 [l10n_it_fiscalcode_crm](l10n_it_fiscalcode_crm/) | 12.0.1.0.2 |  | Aggiunge il campo codice fiscale ai contatti/opportunità
 [l10n_it_fiscalcode_sale](l10n_it_fiscalcode_sale/) | 12.0.1.0.1 | [![eLBati](https://github.com/eLBati.png?size=30px)](https://github.com/eLBati) | Mostra il codice fiscale del cliente nella stampa del preventivo
 [l10n_it_intrastat](l10n_it_intrastat/) | 12.0.1.3.0 |  | Riclassificazione merci e servizi per dichiarazioni Intrastat
@@ -87,7 +88,7 @@ addon | version | maintainers | summary
 [l10n_it_pos_fatturapa_send_directly](l10n_it_pos_fatturapa_send_directly/) | 12.0.2.0.0 | [![eLBati](https://github.com/eLBati.png?size=30px)](https://github.com/eLBati) | Inviare automaticamente a SDI la fattura elettronica dal POS
 [l10n_it_pos_fiscalcode](l10n_it_pos_fiscalcode/) | 12.0.1.0.1 | [![eLBati](https://github.com/eLBati.png?size=30px)](https://github.com/eLBati) | Gestione codice fiscale del cliente all'interno dell'interfaccia del POS
 [l10n_it_rea](l10n_it_rea/) | 12.0.1.0.4 |  | Gestisce i campi del Repertorio Economico Amministrativo
-[l10n_it_reverse_charge](l10n_it_reverse_charge/) | 12.0.1.3.1 |  | Inversione contabile
+[l10n_it_reverse_charge](l10n_it_reverse_charge/) | 12.0.1.3.2 |  | Inversione contabile
 [l10n_it_ricevute_bancarie](l10n_it_ricevute_bancarie/) | 12.0.1.9.0 |  | Ricevute bancarie
 [l10n_it_sdi_channel](l10n_it_sdi_channel/) | 12.0.2.3.0 | [![sergiocorato](https://github.com/sergiocorato.png?size=30px)](https://github.com/sergiocorato) | Aggiunge il canale di invio/ricezione dei file XML attraverso lo SdI
 [l10n_it_split_payment](l10n_it_split_payment/) | 12.0.1.0.2 |  | Split Payment
@@ -103,7 +104,7 @@ addon | version | maintainers | summary
 [l10n_it_website_sale_corrispettivi](l10n_it_website_sale_corrispettivi/) | 12.0.1.0.1 |  | Aggiunge la ricevuta come opzione per l'utente e-commerce
 [l10n_it_website_sale_fatturapa](l10n_it_website_sale_fatturapa/) | 12.0.1.0.3 |  | Aggiunge i campi necessari alla fatturazione elettronica nel form del checkout
 [l10n_it_website_sale_fiscalcode](l10n_it_website_sale_fiscalcode/) | 12.0.1.1.3 |  | Website Sale FiscalCode
-[l10n_it_withholding_tax](l10n_it_withholding_tax/) | 12.0.2.1.6 |  | ITA - Ritenute d'acconto
+[l10n_it_withholding_tax](l10n_it_withholding_tax/) | 12.0.2.1.7 |  | ITA - Ritenute d'acconto
 [l10n_it_withholding_tax_causali](l10n_it_withholding_tax_causali/) | 12.0.2.0.0 |  | Causali pagamento per ritenute d'acconto
 [l10n_it_withholding_tax_payment](l10n_it_withholding_tax_payment/) | 12.0.1.0.1 |  | Gestisce le ritenute sulle fatture e sui pagamenti
 
