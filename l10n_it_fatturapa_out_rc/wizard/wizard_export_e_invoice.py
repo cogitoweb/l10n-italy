@@ -185,9 +185,9 @@ class WizardExportFatturapa(models.TransientModel):
             CedentePrestatore.Contatti = None
         return res
 
-    def _setPubAdministrationRef(self, CedentePrestatore, company):
+    def _setPubAdministrationRef(self, CedentePrestatore, partner, company):
         res = super(WizardExportFatturapa, self)._setPubAdministrationRef(
-            CedentePrestatore, company)
+            CedentePrestatore, partner, company)
         if self.env.context.get("rc_supplier"):
             CedentePrestatore.RiferimentoAmministrazione = None
         return res

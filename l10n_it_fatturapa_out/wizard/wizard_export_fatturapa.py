@@ -356,12 +356,17 @@ class WizardExportFatturapa(models.TransientModel):
             Email=company.partner_id.email or None
             )
 
-    def _setPubAdministrationRef(self, CedentePrestatore, company):
-        if company.fatturapa_pub_administration_ref:
-            CedentePrestatore.RiferimentoAmministrazione = (
-                company.fatturapa_pub_administration_ref)
+    def _setPubAdministrationRef(self, CedentePrestatore, partner, company):
+        # if company.fatturapa_pub_administration_ref:
+        #     CedentePrestatore.RiferimentoAmministrazione = (
+        #         company.fatturapa_pub_administration_ref)
 
-    def setCedentePrestatore(self, company, fatturapa):
+        if partner.admin_ref:
+            CedentePrestatore.RiferimentoAmministrazione = (
+                partner.admin_ref)
+
+
+    def setCedentePrestatore(self, company, partner, fatturapa):
         fatturapa.FatturaElettronicaHeader.CedentePrestatore = (
             CedentePrestatoreType())
         self._setDatiAnagraficiCedente(
@@ -383,9 +388,7 @@ class WizardExportFatturapa(models.TransientModel):
         self._setContatti(
             fatturapa.FatturaElettronicaHeader.CedentePrestatore,
             company)
-        self._setPubAdministrationRef(
-            fatturapa.FatturaElettronicaHeader.CedentePrestatore,
-            company)
+        self._setPubAdministrationRef(fatturapa.FatturaElettronicaHeader.CedentePrestatore, partner, company)
 
     def _setDatiAnagraficiCessionario(self, partner, fatturapa):
         fatturapa.FatturaElettronicaHeader.CessionarioCommittente.\
@@ -872,7 +875,7 @@ class WizardExportFatturapa(models.TransientModel):
         fatturapa.FatturaElettronicaHeader = (
             FatturaElettronicaHeaderType())
         self.setDatiTrasmissione(company, partner, fatturapa)
-        self.setCedentePrestatore(company, fatturapa)
+        self.setCedentePrestatore(company, partner, fatturapa)
         self.setRappresentanteFiscale(company, fatturapa)
         self.setCessionarioCommittente(partner, fatturapa)
         self.setTerzoIntermediarioOSoggettoEmittente(company, fatturapa)
