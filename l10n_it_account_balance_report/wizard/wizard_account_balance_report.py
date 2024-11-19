@@ -14,6 +14,10 @@ class ReportAccountBalanceWizard(models.TransientModel):
         string="Report Type"
     )
     hide_accounts_codes = fields.Boolean()
+    hide_opening_closing = fields.Boolean(
+        string='Hide end of year closing moves',
+        default=True
+    )
 
     @api.onchange('show_partner_details')
     def onchange_show_partner_details(self):
@@ -79,6 +83,7 @@ class ReportAccountBalanceWizard(models.TransientModel):
             'filter_journal_ids': [(6, 0, self.journal_ids.ids)],
             'fy_start_date': self.fy_start_date,
             'hide_account_at_0': self.hide_account_at_0,
+            'hide_opening_closing': self.hide_opening_closing,
             'hide_parent_hierarchy_level': self.hide_parent_hierarchy_level,
             'hierarchy_on': self.hierarchy_on,
             'limit_hierarchy_level': self.limit_hierarchy_level,
