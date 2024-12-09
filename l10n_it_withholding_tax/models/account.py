@@ -157,15 +157,15 @@ class AccountPartialReconcile(models.Model):
         # Retrieve any WT payments linked to the invoice
         wt_move_lines = self._get_wt_payment_lines()
         reconciled_wt_move_lines = wt_move_lines.filtered('reconciled')
-        if not reconciled_wt_move_lines:
-            unreconciled_wt_move_lines = wt_move_lines - reconciled_wt_move_lines
-            if unreconciled_wt_move_lines:
-                # Reconcile only the first existing WT payment
-                wt_move = first(unreconciled_wt_move_lines.mapped('move_id'))
-                self._reconcile_wt_payment(invoice, wt_move)
-            else:
-                for wt_move in wt_moves:
-                    wt_move.generate_account_move()
+        #if not reconciled_wt_move_lines: [CGT-EDIT] - modifica per ritenute multiple
+        unreconciled_wt_move_lines = wt_move_lines - reconciled_wt_move_lines
+        if unreconciled_wt_move_lines:
+            # Reconcile only the first existing WT payment
+            wt_move = first(unreconciled_wt_move_lines.mapped('move_id'))
+            self._reconcile_wt_payment(invoice, wt_move)
+        else:
+            for wt_move in wt_moves:
+                wt_move.generate_account_move()
 
     @api.model
     def create(self, vals):
