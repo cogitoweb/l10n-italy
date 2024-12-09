@@ -148,6 +148,8 @@ class AccountPartialReconcile(models.Model):
             and not self._context.get('no_generate_wt_move')
 
         wt_moves = self.env['withholding.tax.move'].browse()
+
+        _logger.info("generate_moves %s" % generate_moves)
         if generate_moves:
             # Wt moves creation
             wt_moves = self.generate_wt_moves()
@@ -234,6 +236,9 @@ class AccountPartialReconcile(models.Model):
         # Generate wt moves
         wt_tax_move_model = self.env['withholding.tax.move']
         wt_moves = wt_tax_move_model.browse()
+
+        _logger.info("wt_statements %s" % wt_statements)
+        _logger.info("rec_line_statement %s" % rec_line_statement)
         for wt_st in wt_statements:
             amount_wt = wt_st.get_wt_competence(self.amount)
             # Date maturity
