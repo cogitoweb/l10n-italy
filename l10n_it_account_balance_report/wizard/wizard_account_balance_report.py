@@ -14,10 +14,6 @@ class ReportAccountBalanceWizard(models.TransientModel):
         string="Report Type"
     )
     hide_accounts_codes = fields.Boolean()
-    hide_opening_closing = fields.Boolean(
-        string='Hide end of year closing moves',
-        default=True
-    )
 
     @api.onchange('show_partner_details')
     def onchange_show_partner_details(self):
