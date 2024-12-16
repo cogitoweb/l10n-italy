@@ -9,6 +9,7 @@ from odoo.exceptions import ValidationError
 from odoo.fields import first
 from odoo.tools import float_compare
 
+
 import logging
 _logger = logging.getLogger(__name__)
 
@@ -63,7 +64,7 @@ class AccountPartialReconcile(models.Model):
         # we do not need to generate Withholding Tax Moves
         # or change the reconciliation amount
         in_refunding = len(invoices) == 2 \
-            and set(invoices.mapped('type')) == {'in_invoice', 'in_refund'}
+            and (set(invoices.mapped('type')) == {'in_invoice', 'in_refund'}  or set(invoices.mapped('type')) == {'out_invoice', 'out_refund'}) and abs(invoices[0].amount_net_pay_residual) == abs(invoices[1].amount_net_pay_residual)
         if not in_refunding:
             paying_invoice = first(invoices)
         else:
