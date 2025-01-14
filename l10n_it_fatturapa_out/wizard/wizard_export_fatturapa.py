@@ -611,8 +611,11 @@ class WizardExportFatturapa(models.TransientModel):
                 if related_document.name:
                     documento.IdDocumento = related_document.name
                 if related_document.lineRef:
-                    documento.RiferimentoNumeroLinea.append(
-                        line.ftpa_line_number)
+                    if invoice.export_single_row_invoice:
+                        documento.RiferimentoNumeroLinea.append(1)
+                    else:
+                        documento.RiferimentoNumeroLinea.append(
+                            line.ftpa_line_number)
                 if related_document.date:
                     documento.Data = related_document.date
                 if related_document.numitem:
