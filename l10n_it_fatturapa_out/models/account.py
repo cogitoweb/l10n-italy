@@ -40,6 +40,12 @@ class AccountInvoice(models.Model):
         store='true',
     )
 
+    # This should not be decleared here, but #024012
+    export_single_row_invoice = fields.Boolean(
+        string='Export invoice as a single row?',
+        default=False
+    )
+
     @api.multi
     @api.depends('fatturapa_attachment_out_id.state')
     def _compute_fatturapa_state(self):
