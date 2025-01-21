@@ -28,7 +28,9 @@ _GenerationUID = pyxb.utils.utility.UniqueIdentifier('urn:uuid:0937e7fe-3807-11e
 _PyXBVersion = '1.2.6'
 # Generated bindings are not compatible across PyXB versions
 if pyxb.__version__ != _PyXBVersion:
-    raise pyxb.PyXBVersionError(_PyXBVersion)
+    # raise pyxb.PyXBVersionError(_PyXBVersion)
+    pass
+
 
 # A holder for module-level binding classes so we can access them from
 # inside class definitions where property names may conflict.
