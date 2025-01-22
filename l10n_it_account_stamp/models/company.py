@@ -9,7 +9,7 @@ class ResCompany(models.Model):
     tax_stamp_product_id = fields.Many2one(
         'product.product', 'Tax Stamp Product',
         help="Product used as Tax Stamp in customer invoices."
-        )
+    )
 
     move_line_tax_stamp = fields.Boolean(
         string="Move Line Tax Stamp",
@@ -24,4 +24,4 @@ class AccountConfigSettings(models.TransientModel):
     tax_stamp_product_id = fields.Many2one(
         related='company_id.tax_stamp_product_id',
         readonly=False
-        )
+    )
