@@ -11,6 +11,12 @@ class ResCompany(models.Model):
         help="Product used as Tax Stamp in customer invoices."
         )
 
+    move_line_tax_stamp = fields.Boolean(
+        string="Move Line Tax Stamp",
+        default=False,
+        help="Check this for include tax stamp in move line"
+    )
+
 
 class AccountConfigSettings(models.TransientModel):
     _inherit = 'res.config.settings'
