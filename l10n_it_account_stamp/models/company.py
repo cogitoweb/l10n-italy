@@ -10,7 +10,13 @@ class ResCompany(models.Model):
     tax_stamp_product_id = fields.Many2one(
         'product.product', 'Tax Stamp Product',
         help="Product used as Tax Stamp in customer invoices."
-        )
+    )
+
+    move_line_tax_stamp = fields.Boolean(
+        string="Move Line Tax Stamp",
+        default=False,
+        help="Check this for include tax stamp in move line"
+    )
 
 
 class AccountConfigSettings(models.TransientModel):
@@ -20,7 +26,7 @@ class AccountConfigSettings(models.TransientModel):
         related='company_id.tax_stamp_product_id',
         string="Tax Stamp Product",
         help="Product used as Tax Stamp in customer invoices."
-        )
+    )
 
     @api.onchange('company_id')
     def onchange_company_id(self):

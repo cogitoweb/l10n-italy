@@ -37,6 +37,11 @@ msgid "Add tax stamp line"
 msgstr "Aggiungi riga bollo"
 
 #. module: l10n_it_account_stamp
+#: model:ir.model.fields,help:l10n_it_account_stamp.field_res_company_move_line_tax_stamp
+msgid "Check this for include tax stamp in move line"
+msgstr "Seleziona per includere imposta di bollo nella registrazione contabile"
+
+#. module: l10n_it_account_stamp
 #: model:ir.model,name:l10n_it_account_stamp.model_res_company
 msgid "Companies"
 msgstr "Aziende"
@@ -82,6 +87,11 @@ msgstr "Configurazione mancante del conto di ricavo per %s"
 #, python-format
 msgid "Missing tax stamp product in company settings!"
 msgstr "Prodotto imposta di bollo mancante nelle impostazioni dell'azienda!"
+
+#. module: l10n_it_account_stamp
+#: model:ir.model.fields,field_description:l10n_it_account_stamp.field_res_company_move_line_tax_stamp
+msgid "Move Line Tax Stamp"
+msgstr "Registrazione Contabile Bollo"
 
 #. module: l10n_it_account_stamp
 #: code:addons/l10n_it_account_stamp/models/invoice.py:85

@@ -18,5 +18,19 @@
                 </xpath>
             </field>
         </record>
+
+        <record id="view_company_form_l10n_it_account_stamp" model="ir.ui.view">
+            <field name="name">res.company.form.l10n.it.account.stamp</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//page/group/group/field[@name='phone']/.." position="inside">
+                    <field name="move_line_tax_stamp"/>
+                </xpath>
+
+            </field>
+        </record>
+
     </data>
 </odoo>
