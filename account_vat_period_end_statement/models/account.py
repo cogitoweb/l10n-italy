@@ -543,6 +543,7 @@ class AccountVatPeriodEndStatement(models.Model):
             [
                 ('date', '<', self.date),
                 ('annual', '=', False),
+                ('state', '!=', 'draft')
             ],
             order='date desc',
         )
