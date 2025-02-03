@@ -49,7 +49,7 @@
                                 </thead>
                                 <tbody>
                                     <t t-set="tot_amount" t-value="0" />
-                                    <tr t-foreach="o.line_ids.sorted(key=lambda b: (b.due_date, b.partner_id, b.invoice_number))" t-as="line">
+                                    <tr t-foreach="o.line_ids.sorted(key=lambda b: (b.due_date, b.partner_id.internal_code, b.invoice_number))" t-as="line">
                                         <td>
                                             <p><span t-field="line.invoice_number" /></p>
                                         </td>
