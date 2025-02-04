@@ -133,8 +133,7 @@
                     <notebook colspan="4">
                         <page string="General">
                             <field name="line_ids" nolabel="1" colspan="4">
-                                <tree string="Detail">
-                                    <field name="sequence"/>
+                                <tree string="Detail" default_order="due_date, partner_id, invoice_number">
                                     <field name="invoice_number"/>
                                     <field name="invoice_date"/>
                                     <field name="partner_id"/>
