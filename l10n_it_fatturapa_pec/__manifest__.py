@@ -24,6 +24,7 @@
     'data': [
         'security/groups.xml',
         'views/fatturapa_attachment_out.xml',
+        'views/fatturapa_attachment_out_state_kamban.xml',
         'wizard/send_pec_view.xml',
         'wizard/wizard_export_fatturapa_view.xml',
         'views/account.xml',
