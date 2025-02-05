@@ -57,7 +57,7 @@ class VirtualFatturaPAAttachmentOutState(models.Model):
             GROUP BY
                 s.state
             ORDER BY
-                state_ordering
+                id
         """
 
         self.env.cr.execute(_sql_view, {'table': AsIs(view_name)})
