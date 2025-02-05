@@ -61,6 +61,28 @@ class AccountVatPeriodEndStatement(models.Model):
                 credit_vat_amount += credit_line.amount
             statement.deductible_vat_amount = credit_vat_amount
 
+    # helpful function import from somewhere
+    def _get_account_vat_amounts(
+        self, type='credit', statement_account_line=None,
+    ):
+        if statement_account_line is None:
+            statement_account_line = []
+        if type != 'credit' and type != 'debit':
+            raise Exception(_('Account type neither credit and debit !'))
+
+        account_amounts = {}
+        for line in statement_account_line:
+            account_id = line.account_id.id
+            if account_id not in account_amounts:
+                account_amounts[account_id] = {
+                    'account_id': line.account_id.id,
+                    'account_name': line.account_id.name,
+                    'amount': line.amount
+                }
+            else:
+                account_amounts[account_id]['amount'] += line.amount
+        return account_amounts
+
     @api.multi
     @api.depends(
         'state',
@@ -69,6 +91,23 @@ class AccountVatPeriodEndStatement(models.Model):
     def _compute_residual(self):
         precision = self.env.user.company_id.currency_id.decimal_places
         for statement in self:
+
+            # compute total to pay (negative --> credit, positive --> debit)
+            tot_stat = 0
+            vat_accounts_deb = statement._get_account_vat_amounts('debit', statement.debit_vat_account_line_ids)
+            for id in vat_accounts_deb:
+                tot_stat += vat_accounts_deb[id]['amount']
+            vat_accounts_cred = statement._get_account_vat_amounts('credit', statement.credit_vat_account_line_ids)
+            for id in vat_accounts_cred:
+                tot_stat -= vat_accounts_cred[id]['amount']
+            tot_stat -= statement.previous_credit_vat_amount
+            tot_stat += statement.previous_debit_vat_amount
+            tot_stat += statement.interests_debit_vat_amount
+            tot_stat -= statement.tax_credit_amount
+            for generic_vat in statement.generic_vat_account_line_ids:
+                tot_stat += generic_vat.amount * -1
+            is_debit = True if tot_stat >= 0 else False
+
             residual = 0.0
             if statement.move_id.exists():
                 if not statement.move_id:
@@ -76,15 +115,14 @@ class AccountVatPeriodEndStatement(models.Model):
                     statement.reconciled = False
                     return
                 for line in statement.move_id.line_ids:
-                    authority_vat_account_id = (
-                        statement.authority_vat_account_id.id)
-                    if line.account_id.id == authority_vat_account_id:
-                        residual += line.amount_residual
-            statement.residual = abs(residual)
-            if float_is_zero(statement.residual, precision_digits=precision):
-                statement.reconciled = True
-            else:
-                statement.reconciled = False
+                    # authority_vat_account_id = (statement.authority_vat_account_id.id)
+                    # if line.account_id.id == authority_vat_account_id:
+                    residual += line.amount_residual
+                statement.residual = abs(residual)
+                if float_is_zero(statement.residual, precision_digits=precision) and is_debit:
+                    statement.reconciled = True
+                else:
+                    statement.reconciled = False
 
     @api.depends('move_id.line_ids.amount_residual')
     @api.multi
