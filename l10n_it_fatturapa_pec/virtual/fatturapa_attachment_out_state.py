@@ -44,7 +44,7 @@ class VirtualFatturaPAAttachmentOutState(models.Model):
                 states s
             LEFT JOIN fatturapa_attachment_out fao ON fao.state = s.state
             AND
-                fao.create_date >= date_trunc('month', now()) AND fao.create_date < date_trunc('month', now()) + '1 month'::interval
+                fao.create_date < date_trunc('month', now()) AND fao.create_date < date_trunc('month', now()) + '1 month'::interval
             GROUP BY
                 s.state
             ORDER BY
