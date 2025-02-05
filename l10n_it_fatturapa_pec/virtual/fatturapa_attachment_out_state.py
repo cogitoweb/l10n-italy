@@ -37,9 +37,18 @@ class VirtualFatturaPAAttachmentOutState(models.Model):
                 SELECT 'accepted'
             )
             SELECT
-                row_number() over() AS id,
                 s.state,
-                coalesce(count(fao.state), 0) AS total_fatturapa_out
+                coalesce(count(fao.state), 0) AS total_fatturapa_out,
+                CASE
+            	    WHEN s.state = 'ready' THEN 1
+            	    WHEN s.state = 'sent' THEN 2
+            	    WHEN s.state = 'sender_error' THEN 3
+            	    WHEN s.state = 'recipient_error' THEN 4
+            	    WHEN s.state = 'rejected' THEN 5
+            	    WHEN s.state = 'validated' THEN 6
+            	    WHEN s.state = 'accepted' THEN 7
+            	    ELSE 0
+            	END AS id
             FROM
                 states s
             LEFT JOIN fatturapa_attachment_out fao ON fao.state = s.state
@@ -48,7 +57,7 @@ class VirtualFatturaPAAttachmentOutState(models.Model):
             GROUP BY
                 s.state
             ORDER BY
-                s.state
+                state_ordering
         """
 
         self.env.cr.execute(_sql_view, {'table': AsIs(view_name)})

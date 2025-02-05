@@ -19,11 +19,22 @@
 
                                     <div class="o_kanban_card_header">
                                         <div class="o_kanban_card_header_title">
-                                            <div class="col-xs-2">
-                                                <div class="fa fa-map-marker fa-2x"/>
-                                            </div>
-                                            <div>
-                                                <field name="state"/>
+                                            <div class="o_primary">
+                                                <div class="col-xs-2">
+                                                    <div t-if="record.state.raw_value == 'ready'" class="fa fa-envelope-o fa-2x"/>
+                                                    <div t-if="record.state.raw_value == 'ready'" class="fa fa-paper-plane-o fa-2x"/>
+                                                    <div t-if="record.state.raw_value == 'sent'" class="fa fa-envelope fa-2x"/>
+                                                    <div t-if="record.state.raw_value == 'sent'" class="fa fa-paper-plane fa-2x"/>
+                                                    <div t-if="record.state.raw_value == 'sender_error'" class="fa fa-bug fa-2x"/>
+                                                    <div t-if="record.state.raw_value == 'recipient_error'" class="fa fa-bug fa-2x"/>
+                                                    <div t-if="record.state.raw_value == 'recipient_error'" class="fa fa-check fa-2x"/>
+                                                    <div t-if="record.state.raw_value == 'rejected'" class="fa fa-times fa-2x"/>
+                                                    <div t-if="record.state.raw_value == 'validated'" class="fa fa-check-circle-o fa-2x"/>
+                                                    <div t-if="record.state.raw_value == 'accepted'" class="fa fa-check-circle fa-2x"/>
+                                                </div>
+                                                <div>
+                                                    <field name="state"/>
+                                                </div>
                                             </div>
                                         </div>
                                     </div> <!-- /card_header -->
