@@ -8,7 +8,7 @@
             <field name="model">virtual.fatturapa.attachment.out.state</field>
             <field name="arch" type="xml">
 
-                <kanban class="oe_background_grey o_kanban_dashboard o_itinerary_kanban" create="0">
+                <kanban class="oe_background_grey o_kanban_dashboard" create="0">
 
                     <field name="state"/>
 
@@ -40,19 +40,19 @@
 
                                     <div class="container o_kanban_card_content o_visible">
                                         <div class="row">
-                                            <div class="col-xs-5 o_kanban_primary_left">
+                                            <div class="col-xs-6 o_kanban_primary_left">
 
                                                 <button class="btn btn-primary btn-block mb8" type="object" name="action_open_itinerary">
-                                                    <span>View details</span>
+                                                    <span>View e-invoices</span>
                                                 </button>
 
                                             </div> <!-- /kanban_primary_left -->
 
-                                            <div class="col-xs-7 o_kanban_primary_right">
+                                            <div class="col-xs-6 o_kanban_primary_right">
 
                                                 <div class="row">
                                                     <div style="text-align: center">
-                                                        <span>Current Month</span>
+                                                        <span>Total</span>
                                                     </div>
                                                     <div style="text-align: center">
                                                         <field name="total_fatturapa_out"/>
@@ -71,6 +71,27 @@
                     </templates>
                 </kanban>
 
+            </field>
+        </record>
+
+        <record id="fatturapa_attachment_out_state_search" model="ir.ui.view">
+            <field name="name">virtual.fatturapa.attachment.out.state.search</field>
+            <field name="model">virtual.fatturapa.attachment.out.state</field>
+            <field name="arch" type="xml">
+                <search>
+                    <group string="Date">
+                        <filter string="Last year" name="fatturapa_1_year" domain="[('create_date', '=', (context_today() - datetime.timedelta(days=3)).strftime('%Y-%m-%d'))]" />
+                        <filter string="Current year" name="fatturapa_year" domain="[('create_date', '=', (context_today() - datetime.timedelta(days=2)).strftime('%Y-%m-%d'))]" />
+                        <filter string="Last 6 months" name="fatturapa_6_months" domain="[('create_date', '=', (context_today() - datetime.timedelta(days=1)).strftime('%Y-%m-%d'))]" />
+                        <filter string="Last 3 months" name="fatturapa_3_months" domain="[('create_date', '=', datetime.datetime.now().strftime('%Y-%m-%d'))]" />
+                        <filter string="Last month" name="fatturapa_1_month" domain="[('create_date', '=', (context_today() + datetime.timedelta(days=1)).strftime('%Y-%m-%d'))]" />
+                        <filter string="Current month" name="fatturapa_month" domain="[('create_date', '=', (context_today() + datetime.timedelta(days=2)).strftime('%Y-%m-%d'))]" />
+                        <filter string="Last week" name="fatturapa_1_week" domain="[('create_date', '=', (context_today() + datetime.timedelta(days=3)).strftime('%Y-%m-%d'))]" />
+                        <filter string="Current week" name="fatturapa_week" domain="[('create_date', '=', (context_today() + datetime.timedelta(days=3)).strftime('%Y-%m-%d'))]" />
+                        <filter string="Yesterday" name="fatturapa_yesterday" domain="[('create_date', '=', (context_today() + datetime.timedelta(days=3)).strftime('%Y-%m-%d'))]" />
+                        <filter string="Today" name="fatturapa_today" domain="[('create_date', '=', (context_today() + datetime.timedelta(days=3)).strftime('%Y-%m-%d'))]" />
+                    </group>
+                </search>
             </field>
         </record>
 

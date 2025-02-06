@@ -12,6 +12,7 @@ class VirtualFatturaPAAttachmentOutState(models.Model):
     # fields
     state = fields.Char(readonly=True)
     total_fatturapa_out = fields.Integer(readonly=True)
+    total_fatturapa_out_actual_month = fields.Integer(readonly=True)
 
     # This is executed on every module update
     @api.model_cr
@@ -39,6 +40,7 @@ class VirtualFatturaPAAttachmentOutState(models.Model):
             SELECT
                 s.state,
                 coalesce(count(fao.state), 0) AS total_fatturapa_out,
+                coalesce(sum(CASE WHEN fao.create_date >= date_trunc('month', now()) THEN 1 ELSE 0 END), 0) AS total_fatturapa_out_actual_month,
                 CASE
             	    WHEN s.state = 'ready' THEN 1
             	    WHEN s.state = 'sent' THEN 2
@@ -52,8 +54,6 @@ class VirtualFatturaPAAttachmentOutState(models.Model):
             FROM
                 states s
             LEFT JOIN fatturapa_attachment_out fao ON fao.state = s.state
-            AND
-                fao.create_date < date_trunc('month', now()) AND fao.create_date < date_trunc('month', now()) + '1 month'::interval
             GROUP BY
                 s.state
             ORDER BY
