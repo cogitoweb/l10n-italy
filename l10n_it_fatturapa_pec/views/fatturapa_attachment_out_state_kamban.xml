@@ -97,7 +97,7 @@
                                         </div>
                                     </div> <!-- /card_header -->
 
-                                    <div t-if="record.state.raw_value == 'accepted'" class="o_kanban_card_header" style="background-color: #66ff66;">
+                                    <div t-if="record.state.raw_value == 'accepted'" class="o_kanban_card_header" style="background-color: #33cc33;">
                                         <div class="o_kanban_card_header_title">
                                             <div class="o_primary">
                                                 <div class="col-xs-3">
