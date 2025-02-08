@@ -2,13 +2,13 @@
 <odoo>
     <data>
 
-        <!-- itinerary kanban -->
+        <!-- fatturapa kanban -->
         <record id="fatturapa_attachment_out_state_kanban" model="ir.ui.view">
             <field name="name">virtual.fatturapa.attachment.out.state.kanban</field>
             <field name="model">virtual.fatturapa.attachment.out.state</field>
             <field name="arch" type="xml">
 
-                <kanban class="oe_background_grey o_kanban_dashboard" create="0">
+                <kanban class="o_kanban_view oe_background_grey o_kanban_dashboard o_stock_kanban o_cannot_create o_kanban_ungrouped" style="display: flex;" create="0">
 
                     <field name="state"/>
 
@@ -17,51 +17,120 @@
                             <div name="state">
                                 <div>
 
-                                    <div class="o_kanban_card_header">
+                                    <div t-if="record.state.raw_value == 'ready'" class="o_kanban_card_header" style="background-color: #99ccff;">
                                         <div class="o_kanban_card_header_title">
                                             <div class="o_primary">
                                                 <div class="col-xs-3">
-                                                    <div t-if="record.state.raw_value == 'ready'" class="fa fa-paper-plane-o fa-2x"/>
-                                                    <div t-if="record.state.raw_value == 'sent'" class="fa fa-paper-plane fa-2x"/>
-                                                    <div t-if="record.state.raw_value == 'sender_error'" class="fa fa-bug fa-2x"/>
-                                                    <div t-if="record.state.raw_value == 'sender_error'" class="fa fa-level-up fa-2x"/>
-                                                    <div t-if="record.state.raw_value == 'recipient_error'" class="fa fa-bug fa-2x"/>
-                                                    <div t-if="record.state.raw_value == 'recipient_error'" class="fa fa-level-down fa-2x"/>
-                                                    <div t-if="record.state.raw_value == 'rejected'" class="fa fa-times fa-2x"/>
-                                                    <div t-if="record.state.raw_value == 'validated'" class="fa fa-check-circle-o fa-2x"/>
+                                                    <div class="fa fa-paper-plane-o fa-2x"/>
+                                                </div>
+                                                <a type="object" name="get_stock_picking_action_picking_type" style="font-size: 15px;">
+                                                    <field name="state"/>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div> <!-- /card_header -->
+
+                                    <div t-if="record.state.raw_value == 'sent'" class="o_kanban_card_header" style="background-color: #6699ff;">
+                                        <div class="o_kanban_card_header_title">
+                                            <div class="o_primary">
+                                                <div class="col-xs-3">
+                                                    <div class="fa fa-paper-plane fa-2x"/>
+                                                </div>
+                                                <a type="object" name="get_stock_picking_action_picking_type" style="font-size: 15px;">
+                                                    <field name="state"/>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div> <!-- /card_header -->
+
+                                    <div t-if="record.state.raw_value == 'sender_error'" class="o_kanban_card_header" style="background-color: #ffcc66;">
+                                        <div class="o_kanban_card_header_title">
+                                            <div class="o_primary">
+                                                <div class="col-xs-3">
+                                                    <div class="fa fa-bug fa-2x"/>
+                                                    <div class="fa fa-level-up fa-2x"/>
+                                                </div>
+                                                <a type="object" name="get_stock_picking_action_picking_type" style="font-size: 15px;">
+                                                    <field name="state"/>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div> <!-- /card_header -->
+
+                                    <div t-if="record.state.raw_value == 'recipient_error'" class="o_kanban_card_header" style="background-color: #ffcc66;">
+                                        <div class="o_kanban_card_header_title">
+                                            <div class="o_primary">
+                                                <div class="col-xs-3">
+                                                    <div class="fa fa-bug fa-2x"/>
+                                                    <div class="fa fa-level-down fa-2x"/>
+                                                </div>
+                                                <a type="object" name="get_stock_picking_action_picking_type" style="font-size: 15px;">
+                                                    <field name="state"/>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div> <!-- /card_header -->
+
+                                    <div t-if="record.state.raw_value == 'rejected'" class="o_kanban_card_header" style="background-color: #ff6666;">
+                                        <div class="o_kanban_card_header_title">
+                                            <div class="o_primary">
+                                                <div class="col-xs-3">
+                                                    <div class="fa fa-times fa-2x"/>
+                                                </div>
+                                                <a type="object" name="get_stock_picking_action_picking_type" style="font-size: 15px;">
+                                                    <field name="state"/>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div> <!-- /card_header -->
+
+                                    <div t-if="record.state.raw_value == 'validated'" class="o_kanban_card_header" style="background-color: #99ff99;">
+                                        <div class="o_kanban_card_header_title">
+                                            <div class="o_primary">
+                                                <div class="col-xs-3">
+                                                    <div class="fa fa-check-circle-o fa-2x"/>
+                                                </div>
+                                                <a type="object" name="get_stock_picking_action_picking_type" style="font-size: 15px;">
+                                                    <field name="state"/>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div> <!-- /card_header -->
+
+                                    <div t-if="record.state.raw_value == 'accepted'" class="o_kanban_card_header" style="background-color: #66ff66;">
+                                        <div class="o_kanban_card_header_title">
+                                            <div class="o_primary">
+                                                <div class="col-xs-3">
                                                     <div t-if="record.state.raw_value == 'accepted'" class="fa fa-check-circle fa-2x"/>
                                                 </div>
-                                                <div>
+                                                <a type="object" name="get_stock_picking_action_picking_type" style="font-size: 15px;">
                                                     <field name="state"/>
-                                                </div>
+                                                </a>
                                             </div>
                                         </div>
                                     </div> <!-- /card_header -->
 
                                     <div class="container o_kanban_card_content o_visible">
-                                        <div class="row">
-                                            <div class="col-xs-6 o_kanban_primary_left">
-
-                                                <button class="btn btn-primary btn-block mb8" type="object" name="action_open_itinerary">
-                                                    <span>View e-invoices</span>
-                                                </button>
-
-                                            </div> <!-- /kanban_primary_left -->
-
-                                            <div class="col-xs-6 o_kanban_primary_right">
-
-                                                <div class="row">
-                                                    <div style="text-align: center">
-                                                        <span>Total</span>
-                                                    </div>
-                                                    <div style="text-align: center">
-                                                        <field name="total_fatturapa_out"/>
-                                                    </div>
-                                                </div>
-
-                                            </div> <!-- /kanban_primary_right -->
-                                        </div> <!-- /row -->
-
+                                        <div class="row" style="font-size: 20px;">
+                                            <div class="col-xs-9">
+                                                <a name="get_action_fatturapa_current_month_tree" type="object">
+                                                    Current Month
+                                                </a>
+                                            </div>
+                                            <div class="col-xs-3" style="font-weight: bold; text-align: right;">
+                                                <field name="total_fatturapa_out_actual_month"/>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="font-size: 20px;">
+                                            <div class="col-xs-9">
+                                                <a name="get_action_fatturapa_current_year_tree" type="object">
+                                                    Current Year
+                                                </a>
+                                            </div>
+                                            <div class="col-xs-3" style="font-weight: bold; text-align: right;">
+                                                <field name="total_fatturapa_out"/>
+                                            </div>
+                                        </div>
                                     </div> <!-- /card_content -->
 
                                 </div>
@@ -74,29 +143,8 @@
             </field>
         </record>
 
-        <record id="fatturapa_attachment_out_state_search" model="ir.ui.view">
-            <field name="name">virtual.fatturapa.attachment.out.state.search</field>
-            <field name="model">virtual.fatturapa.attachment.out.state</field>
-            <field name="arch" type="xml">
-                <search>
-                    <group string="Date">
-                        <filter string="Last year" name="fatturapa_1_year" domain="[('create_date', '=', (context_today() - datetime.timedelta(days=3)).strftime('%Y-%m-%d'))]" />
-                        <filter string="Current year" name="fatturapa_year" domain="[('create_date', '=', (context_today() - datetime.timedelta(days=2)).strftime('%Y-%m-%d'))]" />
-                        <filter string="Last 6 months" name="fatturapa_6_months" domain="[('create_date', '=', (context_today() - datetime.timedelta(days=1)).strftime('%Y-%m-%d'))]" />
-                        <filter string="Last 3 months" name="fatturapa_3_months" domain="[('create_date', '=', datetime.datetime.now().strftime('%Y-%m-%d'))]" />
-                        <filter string="Last month" name="fatturapa_1_month" domain="[('create_date', '=', (context_today() + datetime.timedelta(days=1)).strftime('%Y-%m-%d'))]" />
-                        <filter string="Current month" name="fatturapa_month" domain="[('create_date', '=', (context_today() + datetime.timedelta(days=2)).strftime('%Y-%m-%d'))]" />
-                        <filter string="Last week" name="fatturapa_1_week" domain="[('create_date', '=', (context_today() + datetime.timedelta(days=3)).strftime('%Y-%m-%d'))]" />
-                        <filter string="Current week" name="fatturapa_week" domain="[('create_date', '=', (context_today() + datetime.timedelta(days=3)).strftime('%Y-%m-%d'))]" />
-                        <filter string="Yesterday" name="fatturapa_yesterday" domain="[('create_date', '=', (context_today() + datetime.timedelta(days=3)).strftime('%Y-%m-%d'))]" />
-                        <filter string="Today" name="fatturapa_today" domain="[('create_date', '=', (context_today() + datetime.timedelta(days=3)).strftime('%Y-%m-%d'))]" />
-                    </group>
-                </search>
-            </field>
-        </record>
-
         <record id="fatturapa_attachment_out_overview_action" model="ir.actions.act_window">
-            <field name="name">Electronic Invoice Export Files</field>
+            <field name="name">E-Invoice Overview</field>
             <field name="res_model">virtual.fatturapa.attachment.out.state</field>
             <field name="view_mode">kanban</field>
             <field name="view_id" ref="fatturapa_attachment_out_state_kanban"/>
@@ -107,5 +155,35 @@
             name="E-invoice Overview"
             id="fatturapa_attachment_out_overview_menu"
             sequence="0"/>
+
+        <!-- add action for filter -->
+        <record id="l10n_it_fatturapa_pec.action_fatturapa_current_month_tree" model="ir.actions.act_window">
+            <field name="name">Fatturapa Attachment Out Current Month</field>
+            <field name="res_model">fatturapa.attachment.out</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="domain"></field>
+            <field name="context">
+                {
+                    'search_default_current_month': 1,
+                }
+            </field>
+            <field name="search_view_id" ref="l10n_it_fatturapa_out.view_fatturapa_out_attachment_search"/>
+        </record>
+
+        <record id="l10n_it_fatturapa_pec.action_fatturapa_current_year_tree" model="ir.actions.act_window">
+            <field name="name">Fatturapa Attachment Out Current Year</field>
+            <field name="res_model">fatturapa.attachment.out</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="domain"></field>
+            <field name="context">
+                {
+                    'search_default_current_year': 1,
+                }
+            </field>
+            <field name="search_view_id" ref="l10n_it_fatturapa_out.view_fatturapa_out_attachment_search"/>
+        </record>
+
     </data>
 </odoo>

@@ -59,6 +59,7 @@
             </field>
         </field>
     </record>
+
     <record model="ir.ui.view" id="view_fatturapa_out_attachment_search_state">
         <field name="name">view_fatturapa_out_attachment_search_state</field>
         <field name="model">fatturapa.attachment.out</field>
@@ -67,6 +68,20 @@
             <field name="name" position="after">
                 <field name="state"/>
                 <filter name="ready" string="Ready" domain="[('state','=','ready')]"/>
+                <separator/>
+                <group string="Date">
+                    <filter string="Last year" name="last_year" domain="[('create_date', '=', (context_today() - datetime.timedelta(days=3)).strftime('%Y-%m-%d'))]" />
+                    <filter string="Current year" name="current_year" domain="[('create_date', '=', (context_today() - datetime.timedelta(days=2)).strftime('%Y-%m-%d'))]" />
+                    <filter string="Last 6 months" name="last_6_months" domain="[('create_date', '=', (context_today() - datetime.timedelta(days=1)).strftime('%Y-%m-%d'))]" />
+                    <filter string="Last 3 months" name="last_3_months" domain="[('create_date', '=', datetime.datetime.now().strftime('%Y-%m-%d'))]" />
+                    <filter string="Last month" name="last_month" domain="[('create_date', '=', (context_today() + datetime.timedelta(days=1)).strftime('%Y-%m-%d'))]" />
+                    <filter string="Current month" name="current_month" domain="[('create_date', '&lt;', (context_today() + relativedelta(months=1)).strftime('%%Y-%%m-01')), ('create_date', '&gt;=', time.strftime('%%Y-%%m-01'))]" />
+                    <filter string="Last week" name="last_week" domain="[('create_date', '>=', (context_today() - relativedelta(days=context_today().weekday()) - datetime.timedelta(days=7)).strftime('%Y-%m-%d')), ('create_date', '&lt;', (context_today() - relativedelta(days=context_today().weekday())).strftime('%Y-%m-%d'))]" />
+                    <filter string="Last 7 days" name="last_7_days" domain="[('create_date', '>', (context_today() - datetime.timedelta(days=7)).strftime('%Y-%m-%d'))]"/>
+                    <filter string="Current week" name="current_week" domain="[('create_date', '>=', (context_today() - relativedelta(days=context_today().weekday())).strftime('%Y-%m-%d'))]" />
+                    <filter string="Yesterday" name="yesterday" domain="[('create_date', '=', (context_today() - datetime.timedelta(days=1)).strftime('%Y-%m-%d'))]" />
+                    <filter string="Today" name="today" domain="[('create_date', '=', (context_today() + datetime.timedelta(days=3)).strftime('%Y-%m-%d'))]" />
+                </group>
             </field>
         </field>
     </record>
