@@ -8,7 +8,7 @@
             <field name="model">virtual.fatturapa.attachment.out.state</field>
             <field name="arch" type="xml">
 
-                <kanban class="o_kanban_view oe_background_grey o_kanban_dashboard o_stock_kanban o_cannot_create o_kanban_ungrouped" style="display: flex;" create="0">
+                <kanban class="o_kanban_view oe_background_grey o_kanban_dashboard o_cannot_create o_kanban_ungrouped" create="0">
 
                     <field name="state"/>
 
