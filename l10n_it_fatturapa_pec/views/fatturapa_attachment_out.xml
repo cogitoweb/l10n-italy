@@ -77,11 +77,11 @@
                 </group>
                 <separator/>
                 <group string="Date">
-                    <filter string="Previous year" name="prev_year" domain="[('create_date', '&lt;', (context_today()).strftime('%Y-01-01')), ('date', '&gt;=', (context_today() - datetime.timedelta(days=365)).strftime('%Y-%m-01'))]" />
+                    <filter string="Previous year" name="previous_year" domain="[('create_date', '&lt;', (context_today()).strftime('%Y-01-01')), ('date', '&gt;=', (context_today() - datetime.timedelta(days=365)).strftime('%Y-%m-01'))]" />
                     <filter string="Current year" name="current_year" domain="[('create_date', '&gt;=', (context_today()).strftime('%Y-01-01'))]" />
-                    <filter string="Previuous month" name="prev_month" domain="[('create_date', '&gt;=', (context_today().replace(day=1) - relativedelta(months=1)).strftime('%Y-%m-%d')), ('create_date', '&lt;',  (context_today().replace(day=1)).strftime('%Y-%m-%d'))]" />
+                    <filter string="Previuous month" name="previous_month" domain="[('create_date', '&gt;=', (context_today().replace(day=1) - relativedelta(months=1)).strftime('%Y-%m-%d')), ('create_date', '&lt;',  (context_today().replace(day=1)).strftime('%Y-%m-%d'))]" />
                     <filter string="Current month" name="current_month" domain="[('create_date', '&gt;=', (context_today().replace(day=1)).strftime('%Y-%m-%d')), ('create_date', '&lt;',  (context_today().replace(day=1) + relativedelta(months=1)).strftime('%Y-%m-%d'))]" />
-                    <filter string="Previous week" name="prev_week" domain="[('create_date', '&gt;=', (context_today() - relativedelta(days=context_today().weekday()) - datetime.timedelta(days=7)).strftime('%Y-%m-%d')), ('create_date', '&lt;', (context_today() - relativedelta(days=context_today().weekday())).strftime('%Y-%m-%d'))]" />
+                    <filter string="Previous week" name="previous_week" domain="[('create_date', '&gt;=', (context_today() - relativedelta(days=context_today().weekday()) - datetime.timedelta(days=7)).strftime('%Y-%m-%d')), ('create_date', '&lt;', (context_today() - relativedelta(days=context_today().weekday())).strftime('%Y-%m-%d'))]" />
                     <filter string="Current week" name="current_week" domain="[('create_date', '&gt;=', (context_today() - relativedelta(days=context_today().weekday())).strftime('%Y-%m-%d'))]" />
                     <filter string="Yesterday" name="yesterday" domain="[('create_date', '=', (context_today() - datetime.timedelta(days=1)).strftime('%Y-%m-%d'))]" />
                     <filter string="Today" name="today" domain="[('create_date', '=', (context_today().strftime('%Y-%m-%d'))]" />
