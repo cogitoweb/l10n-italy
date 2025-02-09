@@ -27,23 +27,27 @@ class VirtualFatturaPAAttachmentOutState(models.Model):
     total_fatturapa_out_current_month = fields.Integer(readonly=True)
     total_fatturapa_out_current_year = fields.Integer(readonly=True)
 
-    @api.multi
-    def _get_action(self, action_xmlid):
-        action = self.env.ref(action_xmlid).read()[0]
-        if self:
-            action['display_name'] = self.display_name
-        return action
-
     # filter methods
     @api.multi
-    def get_action_fatturapa_current_month_tree(self):
-        """ extra action to filter on dashboard """
-        return self._get_action('l10n_it_fatturapa_pec.action_fatturapa_current_month_tree')
+    def action_open_view_state(self):
+        self.ensure_one()
+        action = self.env.ref('l10n_it_fatturapa_out.action_fatturapa_attachment').read()[0]
+        action['context'] = {'search_default_' + self.state: True}
+        return action
 
     @api.multi
-    def get_action_fatturapa_current_year_tree(self):
-        """ extra action to filter on dashboard """
-        return self._get_action('l10n_it_fatturapa_pec.action_fatturapa_current_year_tree')
+    def action_open_view_state_current_month(self):
+        self.ensure_one()
+        action = self.env.ref('l10n_it_fatturapa_out.action_fatturapa_attachment').read()[0]
+        action['context'] = {'search_default_' + self.state: True, 'search_default_current_month': True}
+        return action
+
+    @api.multi
+    def action_open_view_state_current_year(self):
+        self.ensure_one()
+        action = self.env.ref('l10n_it_fatturapa_out.action_fatturapa_attachment').read()[0]
+        action['context'] = {'search_default_' + self.state: True, 'search_default_current_year': True}
+        return action
 
     # This is executed on every module update
     @api.model_cr

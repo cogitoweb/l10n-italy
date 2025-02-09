@@ -66,8 +66,15 @@
         <field name="inherit_id" ref="l10n_it_fatturapa_out.view_fatturapa_out_attachment_search"/>
         <field name="arch" type="xml">
             <field name="name" position="after">
-                <field name="state"/>
-                <filter name="ready" string="Ready" domain="[('state','=','ready')]"/>
+                <group string="State">
+                    <filter name="ready" string="Ready" domain="[('state', '=' , 'ready')]"/>
+                    <filter name="sent" string="Sent" domain="[('state', '=', 'sent')]"/>
+                    <filter name="sender_error" string="Sender Error" domain="[('state', '=', 'sender_error')]"/>
+                    <filter name="recipient_error" string="Not delivered" domain="[('state', '=', 'recipient_error')]"/>
+                    <filter name="rejected" string="Rejected (PA)" domain="[('state', '=', 'rejected')]"/>
+                    <filter name="validated" string="Delivered" domain="[('state', '=', 'validated')]"/>
+                    <filter name="accepted" string="Accepted" domain="[('state', '=', 'accepted')]"/>
+                </group>
                 <separator/>
                 <group string="Date">
                     <filter string="Last year" name="last_year" domain="[('create_date', '=', (context_today() - datetime.timedelta(days=3)).strftime('%Y-%m-%d'))]" />

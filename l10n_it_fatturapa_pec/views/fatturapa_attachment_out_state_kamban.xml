@@ -10,125 +10,121 @@
 
                 <kanban class="o_kanban_view oe_background_grey o_kanban_dashboard o_cannot_create o_kanban_ungrouped" create="0">
 
-
                     <field name="state"/>
 
                     <templates>
                         <t t-name="kanban-box">
                             <div name="state">
-                                <div>
-                                    <div t-if="record.state.raw_value == 'ready'" class="o_kanban_card_header" style="background-color: #99ccff;">
-                                        <div class="o_kanban_card_header_title">
-                                            <div class="o_primary" style="display: flex; align-items: center;">
-                                                <div class="col-xs-3">
-                                                    <div class="fa fa-paper-plane-o fa-2x"/>
-                                                </div>
-                                                <a type="object" name="get_stock_picking_action_picking_type" style="font-size: 15px;">
-                                                    <field name="state"/>
-                                                </a>
+                                <div t-if="record.state.raw_value == 'ready'" class="o_kanban_card_header" style="background-color: #99ccff;">
+                                    <div class="o_kanban_card_header_title">
+                                        <div class="o_primary" style="display: flex; align-items: center;">
+                                            <div class="col-xs-3">
+                                                <div class="fa fa-paper-plane-o fa-2x"/>
                                             </div>
+                                            <a type="object" name="action_open_view_state" style="font-size: 15px;">
+                                                <field name="state"/>
+                                            </a>
                                         </div>
-                                    </div> <!-- /card_header -->
-                                    <div t-if="record.state.raw_value == 'sent'" class="o_kanban_card_header" style="background-color: #6699ff;">
-                                        <div class="o_kanban_card_header_title">
-                                            <div class="o_primary" style="display: flex; align-items: center;">
-                                                <div class="col-xs-3">
-                                                    <div class="fa fa-paper-plane fa-2x"/>
-                                                </div>
-                                                <a type="object" name="get_stock_picking_action_picking_type" style="font-size: 15px;">
-                                                    <field name="state"/>
-                                                </a>
+                                    </div>
+                                </div> <!-- /card_header -->
+                                <div t-if="record.state.raw_value == 'sent'" class="o_kanban_card_header" style="background-color: #6699ff;">
+                                    <div class="o_kanban_card_header_title">
+                                        <div class="o_primary" style="display: flex; align-items: center;">
+                                            <div class="col-xs-3">
+                                                <div class="fa fa-paper-plane fa-2x"/>
                                             </div>
+                                            <a type="object" name="action_open_view_state" style="font-size: 15px;">
+                                                <field name="state"/>
+                                            </a>
                                         </div>
-                                    </div> <!-- /card_header -->
-                                    <div t-if="record.state.raw_value == 'sender_error'" class="o_kanban_card_header" style="background-color: #ffff99;">
-                                        <div class="o_kanban_card_header_title">
-                                            <div class="o_primary" style="display: flex; align-items: center;">
-                                                <div class="col-xs-3">
-                                                    <div class="fa fa-bug fa-2x"/>
-                                                    <div class="fa fa-level-up fa-2x"/>
-                                                </div>
-                                                <a type="object" name="get_stock_picking_action_picking_type" style="font-size: 15px;">
-                                                    <field name="state"/>
-                                                </a>
+                                    </div>
+                                </div> <!-- /card_header -->
+                                <div t-if="record.state.raw_value == 'sender_error'" class="o_kanban_card_header" style="background-color: #ffff99;">
+                                    <div class="o_kanban_card_header_title">
+                                        <div class="o_primary" style="display: flex; align-items: center;">
+                                            <div class="col-xs-3">
+                                                <div class="fa fa-bug fa-2x"/>
+                                                <div class="fa fa-level-up fa-2x"/>
                                             </div>
+                                            <a type="object" name="action_open_view_state" style="font-size: 15px;">
+                                                <field name="state"/>
+                                            </a>
                                         </div>
-                                    </div> <!-- /card_header -->
-                                    <div t-if="record.state.raw_value == 'recipient_error'" class="o_kanban_card_header" style="background-color: #ffff99;">
-                                        <div class="o_kanban_card_header_title">
-                                            <div class="o_primary" style="display: flex; align-items: center;">
-                                                <div class="col-xs-3">
-                                                    <div class="fa fa-bug fa-2x"/>
-                                                    <div class="fa fa-level-down fa-2x"/>
-                                                </div>
-                                                <a type="object" name="get_stock_picking_action_picking_type" style="font-size: 15px;">
-                                                    <field name="state"/>
-                                                </a>
+                                    </div>
+                                </div> <!-- /card_header -->
+                                <div t-if="record.state.raw_value == 'recipient_error'" class="o_kanban_card_header" style="background-color: #ffff99;">
+                                    <div class="o_kanban_card_header_title">
+                                        <div class="o_primary" style="display: flex; align-items: center;">
+                                            <div class="col-xs-3">
+                                                <div class="fa fa-bug fa-2x"/>
+                                                <div class="fa fa-level-down fa-2x"/>
                                             </div>
+                                            <a type="object" name="action_open_view_state" style="font-size: 15px;">
+                                                <field name="state"/>
+                                            </a>
                                         </div>
-                                    </div> <!-- /card_header -->
-                                    <div t-if="record.state.raw_value == 'rejected'" class="o_kanban_card_header" style="background-color: #ff9999;">
-                                        <div class="o_kanban_card_header_title">
-                                            <div class="o_primary" style="display: flex; align-items: center;">
-                                                <div class="col-xs-3">
-                                                    <div class="fa fa-times fa-2x"/>
-                                                </div>
-                                                <a type="object" name="get_stock_picking_action_picking_type" style="font-size: 15px;">
-                                                    <field name="state"/>
-                                                </a>
+                                    </div>
+                                </div> <!-- /card_header -->
+                                <div t-if="record.state.raw_value == 'rejected'" class="o_kanban_card_header" style="background-color: #ff9999;">
+                                    <div class="o_kanban_card_header_title">
+                                        <div class="o_primary" style="display: flex; align-items: center;">
+                                            <div class="col-xs-3">
+                                                <div class="fa fa-times fa-2x"/>
                                             </div>
+                                            <a type="object" name="action_open_view_state" style="font-size: 15px;">
+                                                <field name="state"/>
+                                            </a>
                                         </div>
-                                    </div> <!-- /card_header -->
-                                    <div t-if="record.state.raw_value == 'validated'" class="o_kanban_card_header" style="background-color: #99ff99;">
-                                        <div class="o_kanban_card_header_title">
-                                            <div class="o_primary" style="display: flex; align-items: center;">
-                                                <div class="col-xs-3">
-                                                    <div class="fa fa-check-circle-o fa-2x"/>
-                                                </div>
-                                                <a type="object" name="get_stock_picking_action_picking_type" style="font-size: 15px;">
-                                                    <field name="state"/>
-                                                </a>
+                                    </div>
+                                </div> <!-- /card_header -->
+                                <div t-if="record.state.raw_value == 'validated'" class="o_kanban_card_header" style="background-color: #99ff99;">
+                                    <div class="o_kanban_card_header_title">
+                                        <div class="o_primary" style="display: flex; align-items: center;">
+                                            <div class="col-xs-3">
+                                                <div class="fa fa-check-circle-o fa-2x"/>
                                             </div>
+                                            <a type="object" name="action_open_view_state" style="font-size: 15px;">
+                                                <field name="state"/>
+                                            </a>
                                         </div>
-                                    </div> <!-- /card_header -->
-                                    <div t-if="record.state.raw_value == 'accepted'" class="o_kanban_card_header" style="background-color: #33cc33;">
-                                        <div class="o_kanban_card_header_title">
-                                            <div class="o_primary" style="display: flex; align-items: center;">
-                                                <div class="col-xs-3">
-                                                    <div t-if="record.state.raw_value == 'accepted'" class="fa fa-check-circle fa-2x"/>
-                                                </div>
-                                                <a type="object" name="get_stock_picking_action_picking_type" style="font-size: 15px;">
-                                                    <field name="state"/>
-                                                </a>
+                                    </div>
+                                </div> <!-- /card_header -->
+                                <div t-if="record.state.raw_value == 'accepted'" class="o_kanban_card_header" style="background-color: #33cc33;">
+                                    <div class="o_kanban_card_header_title">
+                                        <div class="o_primary" style="display: flex; align-items: center;">
+                                            <div class="col-xs-3">
+                                                <div t-if="record.state.raw_value == 'accepted'" class="fa fa-check-circle fa-2x"/>
                                             </div>
+                                            <a type="object" name="action_open_view_state" style="font-size: 15px;">
+                                                <field name="state"/>
+                                            </a>
                                         </div>
-                                    </div> <!-- /card_header -->
-                                    <div class="container o_kanban_card_content o_visible">
-                                        <div class="row" style="font-size: 20px;">
-                                            <div class="col-xs-9">
-                                                <a name="get_action_fatturapa_current_month_tree" type="object">
-                                                    Current Month
-                                                </a>
-                                            </div>
-                                            <div class="col-xs-3" style="font-weight: bold; text-align: right;">
-                                                <field name="total_fatturapa_out_current_month"/>
-                                            </div>
+                                    </div>
+                                </div> <!-- /card_header -->
+                                <div class="container o_kanban_card_content o_visible">
+                                    <div class="row" style="font-size: 20px;">
+                                        <div class="col-xs-9">
+                                            <a name="action_open_view_state_current_month" type="object">
+                                                Current Month
+                                            </a>
                                         </div>
-                                        <div class="row" style="font-size: 20px;">
-                                            <div class="col-xs-9">
-                                                <a name="get_action_fatturapa_current_year_tree" type="object">
-                                                    Current Year
-                                                </a>
-                                            </div>
-                                            <div class="col-xs-3" style="font-weight: bold; text-align: right;">
-                                                <field name="total_fatturapa_out_current_year"/>
-                                            </div>
+                                        <div class="col-xs-3" style="font-weight: bold; text-align: right;">
+                                            <field name="total_fatturapa_out_current_month"/>
                                         </div>
-                                    </div> <!-- /card_content -->
-                                </div>
+                                    </div>
+                                    <div class="row" style="font-size: 20px;">
+                                        <div class="col-xs-9">
+                                            <a name="action_open_view_state_current_year" type="object">
+                                                Current Year
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-3" style="font-weight: bold; text-align: right;">
+                                            <field name="total_fatturapa_out_current_year"/>
+                                        </div>
+                                    </div>
+                                </div> <!-- /card_content -->
                             </div>
                         </t>
-
                     </templates>
                 </kanban>
 
@@ -147,35 +143,6 @@
             name="E-invoice Overview"
             id="fatturapa_attachment_out_overview_menu"
             sequence="0"/>
-
-        <!-- add action for filter -->
-        <record id="l10n_it_fatturapa_pec.action_fatturapa_current_month_tree" model="ir.actions.act_window">
-            <field name="name">Fatturapa Attachment Out Current Month</field>
-            <field name="res_model">fatturapa.attachment.out</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="view_type">form</field>
-            <field name="domain"></field>
-            <field name="context">
-                {
-                    'search_default_current_month': 1,
-                }
-            </field>
-            <field name="search_view_id" ref="l10n_it_fatturapa_out.view_fatturapa_out_attachment_search"/>
-        </record>
-
-        <record id="l10n_it_fatturapa_pec.action_fatturapa_current_year_tree" model="ir.actions.act_window">
-            <field name="name">Fatturapa Attachment Out Current Year</field>
-            <field name="res_model">fatturapa.attachment.out</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="view_type">form</field>
-            <field name="domain"></field>
-            <field name="context">
-                {
-                    'search_default_current_year': 1,
-                }
-            </field>
-            <field name="search_view_id" ref="l10n_it_fatturapa_out.view_fatturapa_out_attachment_search"/>
-        </record>
 
     </data>
 </odoo>
