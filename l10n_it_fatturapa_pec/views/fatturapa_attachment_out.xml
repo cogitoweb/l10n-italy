@@ -77,7 +77,7 @@
                 </group>
                 <separator/>
                 <group string="Date">
-                    <filter string="Previous year" name="previous_year" domain="[('create_date', '&lt;', (context_today()).strftime('%Y-01-01')), ('date', '&gt;=', (context_today() - datetime.timedelta(days=365)).strftime('%Y-%m-01'))]" />
+                    <filter string="Previous year" name="previous_year" domain="[('create_date', '&lt;', (context_today()).strftime('%Y-01-01')), ('create_date', '&gt;=', (context_today() - datetime.timedelta(days=365)).strftime('%Y-%m-01'))]" />
                     <filter string="Current year" name="current_year" domain="[('create_date', '&gt;=', (context_today()).strftime('%Y-01-01'))]" />
                     <filter string="Previuous month" name="previous_month" domain="[('create_date', '&gt;=', (context_today().replace(day=1) - relativedelta(months=1)).strftime('%Y-%m-%d')), ('create_date', '&lt;',  (context_today().replace(day=1)).strftime('%Y-%m-%d'))]" />
                     <filter string="Current month" name="current_month" domain="[('create_date', '&gt;=', (context_today().replace(day=1)).strftime('%Y-%m-%d')), ('create_date', '&lt;',  (context_today().replace(day=1) + relativedelta(months=1)).strftime('%Y-%m-%d'))]" />
