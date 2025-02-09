@@ -10,16 +10,16 @@
 
                 <kanban class="o_kanban_view oe_background_grey o_kanban_dashboard o_cannot_create o_kanban_ungrouped" create="0">
 
+
                     <field name="state"/>
 
                     <templates>
                         <t t-name="kanban-box">
                             <div name="state">
                                 <div>
-
                                     <div t-if="record.state.raw_value == 'ready'" class="o_kanban_card_header" style="background-color: #99ccff;">
                                         <div class="o_kanban_card_header_title">
-                                            <div class="o_primary">
+                                            <div class="o_primary" style="display: flex; align-items: center;">
                                                 <div class="col-xs-3">
                                                     <div class="fa fa-paper-plane-o fa-2x"/>
                                                 </div>
@@ -29,10 +29,9 @@
                                             </div>
                                         </div>
                                     </div> <!-- /card_header -->
-
                                     <div t-if="record.state.raw_value == 'sent'" class="o_kanban_card_header" style="background-color: #6699ff;">
                                         <div class="o_kanban_card_header_title">
-                                            <div class="o_primary">
+                                            <div class="o_primary" style="display: flex; align-items: center;">
                                                 <div class="col-xs-3">
                                                     <div class="fa fa-paper-plane fa-2x"/>
                                                 </div>
@@ -42,10 +41,9 @@
                                             </div>
                                         </div>
                                     </div> <!-- /card_header -->
-
-                                    <div t-if="record.state.raw_value == 'sender_error'" class="o_kanban_card_header" style="background-color: #ffcc66;">
+                                    <div t-if="record.state.raw_value == 'sender_error'" class="o_kanban_card_header" style="background-color: #ffff99;">
                                         <div class="o_kanban_card_header_title">
-                                            <div class="o_primary">
+                                            <div class="o_primary" style="display: flex; align-items: center;">
                                                 <div class="col-xs-3">
                                                     <div class="fa fa-bug fa-2x"/>
                                                     <div class="fa fa-level-up fa-2x"/>
@@ -56,10 +54,9 @@
                                             </div>
                                         </div>
                                     </div> <!-- /card_header -->
-
-                                    <div t-if="record.state.raw_value == 'recipient_error'" class="o_kanban_card_header" style="background-color: #ffcc66;">
+                                    <div t-if="record.state.raw_value == 'recipient_error'" class="o_kanban_card_header" style="background-color: #ffff99;">
                                         <div class="o_kanban_card_header_title">
-                                            <div class="o_primary">
+                                            <div class="o_primary" style="display: flex; align-items: center;">
                                                 <div class="col-xs-3">
                                                     <div class="fa fa-bug fa-2x"/>
                                                     <div class="fa fa-level-down fa-2x"/>
@@ -70,10 +67,9 @@
                                             </div>
                                         </div>
                                     </div> <!-- /card_header -->
-
-                                    <div t-if="record.state.raw_value == 'rejected'" class="o_kanban_card_header" style="background-color: #ff6666;">
+                                    <div t-if="record.state.raw_value == 'rejected'" class="o_kanban_card_header" style="background-color: #ff9999;">
                                         <div class="o_kanban_card_header_title">
-                                            <div class="o_primary">
+                                            <div class="o_primary" style="display: flex; align-items: center;">
                                                 <div class="col-xs-3">
                                                     <div class="fa fa-times fa-2x"/>
                                                 </div>
@@ -83,10 +79,9 @@
                                             </div>
                                         </div>
                                     </div> <!-- /card_header -->
-
                                     <div t-if="record.state.raw_value == 'validated'" class="o_kanban_card_header" style="background-color: #99ff99;">
                                         <div class="o_kanban_card_header_title">
-                                            <div class="o_primary">
+                                            <div class="o_primary" style="display: flex; align-items: center;">
                                                 <div class="col-xs-3">
                                                     <div class="fa fa-check-circle-o fa-2x"/>
                                                 </div>
@@ -96,10 +91,9 @@
                                             </div>
                                         </div>
                                     </div> <!-- /card_header -->
-
                                     <div t-if="record.state.raw_value == 'accepted'" class="o_kanban_card_header" style="background-color: #33cc33;">
                                         <div class="o_kanban_card_header_title">
-                                            <div class="o_primary">
+                                            <div class="o_primary" style="display: flex; align-items: center;">
                                                 <div class="col-xs-3">
                                                     <div t-if="record.state.raw_value == 'accepted'" class="fa fa-check-circle fa-2x"/>
                                                 </div>
@@ -109,7 +103,6 @@
                                             </div>
                                         </div>
                                     </div> <!-- /card_header -->
-
                                     <div class="container o_kanban_card_content o_visible">
                                         <div class="row" style="font-size: 20px;">
                                             <div class="col-xs-9">
@@ -118,7 +111,7 @@
                                                 </a>
                                             </div>
                                             <div class="col-xs-3" style="font-weight: bold; text-align: right;">
-                                                <field name="total_fatturapa_out_actual_month"/>
+                                                <field name="total_fatturapa_out_current_month"/>
                                             </div>
                                         </div>
                                         <div class="row" style="font-size: 20px;">
@@ -128,11 +121,10 @@
                                                 </a>
                                             </div>
                                             <div class="col-xs-3" style="font-weight: bold; text-align: right;">
-                                                <field name="total_fatturapa_out"/>
+                                                <field name="total_fatturapa_out_current_year"/>
                                             </div>
                                         </div>
                                     </div> <!-- /card_content -->
-
                                 </div>
                             </div>
                         </t>

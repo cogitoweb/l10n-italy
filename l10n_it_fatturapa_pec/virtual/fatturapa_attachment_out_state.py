@@ -24,7 +24,8 @@ class VirtualFatturaPAAttachmentOutState(models.Model):
         readonly=True
     )
     total_fatturapa_out = fields.Integer(readonly=True)
-    total_fatturapa_out_actual_month = fields.Integer(readonly=True)
+    total_fatturapa_out_current_month = fields.Integer(readonly=True)
+    total_fatturapa_out_current_year = fields.Integer(readonly=True)
 
     @api.multi
     def _get_action(self, action_xmlid):
@@ -70,7 +71,8 @@ class VirtualFatturaPAAttachmentOutState(models.Model):
             SELECT
                 s.state,
                 coalesce(count(fao.state), 0) AS total_fatturapa_out,
-                coalesce(sum(CASE WHEN fao.create_date >= date_trunc('month', now()) THEN 1 ELSE 0 END), 0) AS total_fatturapa_out_actual_month,
+                coalesce(sum(CASE WHEN fao.create_date >= date_trunc('month', now()) THEN 1 ELSE 0 END), 0) AS total_fatturapa_out_current_month,
+                coalesce(sum(CASE WHEN fao.create_date >= date_trunc('year', now()) THEN 1 ELSE 0 END), 0) AS total_fatturapa_out_current_year,
                 CASE
             	    WHEN s.state = 'ready' THEN 1
             	    WHEN s.state = 'sent' THEN 2
