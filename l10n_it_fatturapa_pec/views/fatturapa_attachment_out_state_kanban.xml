@@ -82,6 +82,7 @@
                                         <div class="o_primary" style="display: flex; align-items: center;">
                                             <div class="col-xs-3">
                                                 <div class="fa fa-check-circle-o fa-2x"/>
+                                                <div class="fa fa-level-down fa-2x"/>
                                             </div>
                                             <a type="object" name="action_open_view_state" style="font-size: 15px;">
                                                 <field name="state"/>
