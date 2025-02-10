@@ -140,10 +140,10 @@
         </record>
 
         <menuitem action="fatturapa_attachment_out_overview_action"
-            parent="l10n_it_fatturapa.menu_fattura_pa_receivables"
+            parent="accounting_full.menu_account_overview_full"
             name="E-invoice Overview"
             id="fatturapa_attachment_out_overview_menu"
-            sequence="0"/>
+            sequence="2"/>
 
     </data>
 </odoo>
