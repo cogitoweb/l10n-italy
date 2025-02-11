@@ -27,6 +27,7 @@
         'security/ir.model.access.csv',
         'wizard/link_to_existing_invoice.xml',
         'views/company_view.xml',
+        'views/fatturapa_attachment_in_state_kanban.xml'
         'security/rules.xml'
     ],
     "installable": True
