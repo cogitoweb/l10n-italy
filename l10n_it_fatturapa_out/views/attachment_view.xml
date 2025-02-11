@@ -71,7 +71,7 @@
         </record>
 
         <menuitem action="action_fatturapa_attachment"
-            parent="l10n_it_fatturapa.menu_fattura_pa_receivables"
+            parent="account.menu_finance_receivables"
             name="E-invoice Export Files"
             id="fatturapa_attachment_menu"/>
 
