@@ -26,7 +26,8 @@ class AccountInvoice(models.Model):
         compute='_compute_amount')
     split_payment = fields.Boolean(
         'Split Payment',
-        related='fiscal_position_id.split_payment')
+        related='fiscal_position_id.split_payment',
+        readonly=True)
 
     @api.one
     @api.depends(
