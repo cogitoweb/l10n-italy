@@ -15,11 +15,11 @@
                     <templates>
                         <t t-name="kanban-box">
                             <div name="state">
-                                <div t-if="record.state.raw_value == 'registered'" class="o_kanban_card_header" style="background-color: #99ccff;">
+                                <div t-if="record.state.raw_value == 'not_registered'" class="o_kanban_card_header" style="background-color: #99ccff;">
                                     <div class="o_kanban_card_header_title">
                                         <div class="o_primary" style="display: flex; align-items: center;">
                                             <div class="col-xs-3">
-                                                <div class="fa fa-paper-plane-o fa-2x"/>
+                                                <div class="fa fa-check-circle-o fa-2x"/>
                                             </div>
                                             <a type="object" name="action_open_view_state" style="font-size: 15px;">
                                                 <field name="state"/>
@@ -27,11 +27,11 @@
                                         </div>
                                     </div>
                                 </div> <!-- /card_header -->
-                                <div t-if="record.state.raw_value == 'not_registered'" class="o_kanban_card_header" style="background-color: #6699ff;">
+                                <div t-if="record.state.raw_value == 'registered'" class="o_kanban_card_header" style="background-color: #33cc33;">
                                     <div class="o_kanban_card_header_title">
                                         <div class="o_primary" style="display: flex; align-items: center;">
                                             <div class="col-xs-3">
-                                                <div class="fa fa-paper-plane fa-2x"/>
+                                                <div class="fa fa-check-circle fa-2x"/>
                                             </div>
                                             <a type="object" name="action_open_view_state" style="font-size: 15px;">
                                                 <field name="state"/>
