@@ -11,27 +11,17 @@
                 <kanban class="o_kanban_view oe_background_grey o_kanban_dashboard o_cannot_create o_kanban_ungrouped" create="0">
 
                     <field name="state"/>
+                    <field name="color"/>
+                    <field name="icon"/>
 
                     <templates>
                         <t t-name="kanban-box">
                             <div name="state">
-                                <div t-if="record.state.raw_value == 'to_register'" class="o_kanban_card_header" style="background-color: #99ccff;">
+                                <div class="o_kanban_card_header" t-att-style="'background-color: ' + record.color.raw_value">
                                     <div class="o_kanban_card_header_title">
                                         <div class="o_primary" style="display: flex; align-items: center;">
                                             <div class="col-xs-3">
-                                                <div class="fa fa-check-circle-o fa-2x"/>
-                                            </div>
-                                            <a type="object" name="action_open_view_state" style="font-size: 15px;">
-                                                <field name="state"/>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div> <!-- /card_header -->
-                                <div t-if="record.state.raw_value == 'registered'" class="o_kanban_card_header" style="background-color: #33cc33;">
-                                    <div class="o_kanban_card_header_title">
-                                        <div class="o_primary" style="display: flex; align-items: center;">
-                                            <div class="col-xs-3">
-                                                <div class="fa fa-check-circle fa-2x"/>
+                                                <div t-att-class="record.icon.raw_value"/>
                                             </div>
                                             <a type="object" name="action_open_view_state" style="font-size: 15px;">
                                                 <field name="state"/>

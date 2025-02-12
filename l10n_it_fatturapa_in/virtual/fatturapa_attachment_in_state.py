@@ -22,6 +22,9 @@ class VirtualFatturaPAAttachmentInState(models.Model):
     total_fatturapa_in_current_month = fields.Integer(readonly=True)
     total_fatturapa_in_current_year = fields.Integer(readonly=True)
 
+    color = fields.Char(readonly=True)
+    icon = fields.Char(readonly=True)
+
     # filter methods
     @api.multi
     def action_open_view_state(self):
@@ -53,6 +56,11 @@ class VirtualFatturaPAAttachmentInState(models.Model):
         _sql_view = """
             CREATE OR REPLACE VIEW %(table)s AS
             SELECT
+                CASE
+            		WHEN fai.registered = FALSE THEN 1
+            		WHEN fai.registered = TRUE THEN 2
+            		ELSE 0
+            	END AS id,
             	CASE
             		WHEN fai.registered = FALSE THEN 'to_register'
             		WHEN fai.registered = TRUE THEN 'registered'
@@ -60,11 +68,14 @@ class VirtualFatturaPAAttachmentInState(models.Model):
                 coalesce(count(fai.registered), 0) AS total_fatturapa_in,
                 coalesce(sum(CASE WHEN fai.create_date >= date_trunc('month', now()) THEN 1 ELSE 0 END), 0) AS total_fatturapa_in_current_month,
                	coalesce(sum(CASE WHEN fai.create_date >= date_trunc('year', now()) THEN 1 ELSE 0 END), 0) AS total_fatturapa_in_current_year,
-               	CASE
-            		WHEN fai.registered = FALSE THEN 1
-            		WHEN fai.registered = TRUE THEN 2
-            		ELSE 0
-            	END AS id
+                CASE
+            	    WHEN fai.registered = FALSE THEN '#99ccff'
+            	    WHEN fai.registered = TRUE THEN '#33cc33'
+            	END AS color,
+                CASE
+            	    WHEN fai.registered = FALSE THEN 'fa fa-check-circle-o fa-2x'
+            	    WHEN fai.registered = TRUE THEN 'fa fa-check-circle fa-2x'
+            	END AS icon
             FROM
             	fatturapa_attachment_in fai
             GROUP BY
