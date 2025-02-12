@@ -106,12 +106,22 @@ msgstr "Data consegna"
 #. module: l10n_it_fatturapa_pec
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_pec.field_wizard_fatturapa_send_pec_display_name
 msgid "Display Name"
-msgstr "Nome visualizzato"
+msgstr "Nome da visualizzare"
+
+#. module: l10n_it_fatturapa_pec
+#: model:ir.actions.act_window,name:l10n_it_fatturapa_pec.fatturapa_attachment_out_overview_action
+msgid "E-Invoice Out Overview"
+msgstr "Panoramica e-fatture esportati"
 
 #. module: l10n_it_fatturapa_pec
 #: model:ir.model,name:l10n_it_fatturapa_pec.model_fatturapa_attachment_out
 msgid "E-invoice Export File"
 msgstr "File e-fattura esportato"
+
+#. module: l10n_it_fatturapa_pec
+#: model:ir.ui.menu,name:l10n_it_fatturapa_pec.fatturapa_attachment_out_overview_menu
+msgid "E-invoice Out Overview"
+msgstr "Panoramica e-fatture esportati"
 
 #. module: l10n_it_fatturapa_pec
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_pec.field_account_invoice_fatturapa_state

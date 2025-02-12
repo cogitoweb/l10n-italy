@@ -335,7 +335,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_account_invoice_e_invoice_received_date
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_fatturapa_attachment_in_e_invoice_received_date
 msgid "E-Bill Received Date"
-msgstr ""
+msgstr "E-Bill Received Date"
+
+#. module: l10n_it_fatturapa_in
+#: model:ir.actions.act_window,name:l10n_it_fatturapa_in.fatturapa_attachment_in_overview_action
+msgid "E-Invoice In Overview"
+msgstr "Panoramica e-fatture in ingresso"
 
 #. module: l10n_it_fatturapa_in
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_account_invoice_e_invoice_amount_tax
@@ -416,6 +421,11 @@ msgstr "Livello di dettaglio e-fatture"
 #: model:ir.model,name:l10n_it_fatturapa_in.model_discount_rise_price
 msgid "E-invoice Discount Supplement Data"
 msgstr "Dati sconto maggiorazione e-fattura"
+
+#. module: l10n_it_fatturapa_in
+#: model:ir.ui.menu,name:l10n_it_fatturapa_in.fatturapa_attachment_in_overview_menu
+msgid "E-invoice In Overview"
+msgstr "Panoramica e-fatture in ingresso"
 
 #. module: l10n_it_fatturapa_in
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_account_invoice_e_invoice_date_invoice
