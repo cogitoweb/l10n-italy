@@ -32,6 +32,13 @@ class FatturaPAAttachmentIn(models.Model):
     registered = fields.Boolean(
         "Registered", compute="_compute_registered", store=True)
 
+    registered_label = fields.Selection(
+        [('registered', 'Registered'), ('to_register', 'To register')],
+        string='State',
+        compute='_compute_registered_label',
+        store=True
+    )
+
     e_invoice_received_date = fields.Datetime(string='E-Bill Received Date')
 
     e_invoice_validation_error = fields.Boolean(
@@ -127,3 +134,8 @@ class FatturaPAAttachmentIn(models.Model):
                 'invoice_id': invoice_id,
             }
             AttachModel.create(_attach_dict)
+
+    @api.depends('registered')
+    def _compute_registered_label(self):
+        for record in self:
+            record.registered_label = 'registered' if record.registered else 'to_register'

@@ -859,7 +859,12 @@ msgstr "Codice provincia dell'ufficio REA ( %s ) non presente nel sistema"
 #. module: l10n_it_fatturapa_in
 #: selection:res.company,in_invoice_registration_date:0
 msgid "Received Date"
-msgstr ""
+msgstr "Received Date"
+
+#. module: l10n_it_fatturapa_in
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_in.view_fatturapa_in_attachment_search
+msgid "Receiving date"
+msgstr "Data ricezione"
 
 #. module: l10n_it_fatturapa_in
 #: code:addons/l10n_it_fatturapa_in/wizard/wizard_import_fatturapa.py:215
@@ -868,6 +873,7 @@ msgid "Register Province ( %s ) not present in your system"
 msgstr "Provincia albo ( %s ) non presente nel sistema"
 
 #. module: l10n_it_fatturapa_in
+#: selection:fatturapa.attachment.in,registered_label:0
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_fatturapa_attachment_in_registered
 #: model:ir.ui.view,arch_db:l10n_it_fatturapa_in.view_fatturapa_in_attachment_search
 #: selection:virtual.fatturapa.attachment.in.state,state:0
@@ -959,7 +965,14 @@ msgstr "Tipo cessione prestazione"
 #. module: l10n_it_fatturapa_in
 #: model:ir.ui.view,arch_db:l10n_it_fatturapa_in.view_invoice_form_fatturapa_in
 msgid "Stable Organization"
-msgstr "Stabile organizzazione"
+msgstr "Organizzazione stabile"
+
+#. module: l10n_it_fatturapa_in
+#: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_fatturapa_attachment_in_registered_label
+#: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_virtual_fatturapa_attachment_in_state_state
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_in.view_fatturapa_in_attachment_search
+msgid "State"
+msgstr "Stato"
 
 #. module: l10n_it_fatturapa_in
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_fatturapa_attachment_in_store_fname
@@ -1060,6 +1073,7 @@ msgid "To Register"
 msgstr "Da registrare"
 
 #. module: l10n_it_fatturapa_in
+#: selection:fatturapa.attachment.in,registered_label:0
 #: selection:virtual.fatturapa.attachment.in.state,state:0
 msgid "To register"
 msgstr "Da registrare"

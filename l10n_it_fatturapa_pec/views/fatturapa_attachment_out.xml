@@ -86,6 +86,14 @@
                     <filter string="Yesterday" name="yesterday" domain="[('create_date', '=', (context_today() - datetime.timedelta(days=1)).strftime('%Y-%m-%d'))]" />
                     <filter string="Today" name="today" domain="[('create_date', '=', context_today().strftime('%Y-%m-%d'))]" />
                 </group>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_state" string="State" context="{'group_by': 'state'}"/>
+                    <separator/>
+                    <!-- example of group by date - https://stackoverflow.com/a/55511471 -->
+                    <filter name="group_by_create_date" string="Created date" context="{'group_by': 'create_date:month'}"/>
+                    <filter name="group_by_sending_date" string="Sending date" context="{'group_by': 'sending_date:month'}"/>
+                    <filter name="group_by_delivered_date" string="Delivered date" context="{'group_by': 'delivered_date:month'}"/>
+                </group>
             </field>
         </field>
     </record>

@@ -55,6 +55,11 @@ msgid "Created by"
 msgstr "Creato da"
 
 #. module: l10n_it_fatturapa_pec
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_pec.view_fatturapa_out_attachment_search_state
+msgid "Created date"
+msgstr "Data di creazione"
+
+#. module: l10n_it_fatturapa_pec
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_pec.field_wizard_fatturapa_send_pec_create_date
 msgid "Created on"
 msgstr "Creato il"
@@ -104,6 +109,12 @@ msgid "Delivered Date"
 msgstr "Data consegna"
 
 #. module: l10n_it_fatturapa_pec
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_pec.view_fatturapa_out_attachment_search_state
+msgid "Delivered date"
+msgstr "Data consegna"
+
+#. module: l10n_it_fatturapa_pec
+#: model:ir.model.fields,field_description:l10n_it_fatturapa_pec.field_virtual_fatturapa_attachment_out_state_display_name
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_pec.field_wizard_fatturapa_send_pec_display_name
 msgid "Display Name"
 msgstr "Nome da visualizzare"
@@ -345,6 +356,11 @@ msgstr "Errore trasmittente"
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_pec.field_fatturapa_attachment_out_sending_user
 msgid "Sending User"
 msgstr "Utente trasmittente"
+
+#. module: l10n_it_fatturapa_pec
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_pec.view_fatturapa_out_attachment_search_state
+msgid "Sending date"
+msgstr "Data invio"
 
 #. module: l10n_it_fatturapa_pec
 #: selection:account.invoice,fatturapa_state:0
