@@ -31,26 +31,16 @@ class VirtualFatturaPAAttachmentOutState(models.Model):
     icon1 = fields.Char(readonly=True)
     icon2 = fields.Char(readonly=True)
 
-    # filter methods
+    # filter method
     @api.multi
     def action_open_view_state(self):
         self.ensure_one()
+        ctx = self.env.context.copy()
+        ctx.update({
+            'search_default_' + self.state: True
+        })
         action = self.env.ref('l10n_it_fatturapa_out.action_fatturapa_attachment').read()[0]
-        action['context'] = {'search_default_' + self.state: True}
-        return action
-
-    @api.multi
-    def action_open_view_state_current_month(self):
-        self.ensure_one()
-        action = self.env.ref('l10n_it_fatturapa_out.action_fatturapa_attachment').read()[0]
-        action['context'] = {'search_default_' + self.state: True, 'search_default_current_month': True}
-        return action
-
-    @api.multi
-    def action_open_view_state_current_year(self):
-        self.ensure_one()
-        action = self.env.ref('l10n_it_fatturapa_out.action_fatturapa_attachment').read()[0]
-        action['context'] = {'search_default_' + self.state: True, 'search_default_current_year': True}
+        action['context'] = ctx
         return action
 
     # This is executed on every module update
