@@ -32,7 +32,7 @@
                                 <div class="container o_kanban_card_content o_visible">
                                     <div class="row" style="font-size: 20px;">
                                         <div class="col-xs-9">
-                                            <a name="action_open_view_state_current_month" type="object">
+                                            <a name="action_open_view_state" type="object" context="{'search_default_current_month': True}">
                                                 Current Month
                                             </a>
                                         </div>
@@ -42,7 +42,7 @@
                                     </div>
                                     <div class="row" style="font-size: 20px;">
                                         <div class="col-xs-9">
-                                            <a name="action_open_view_state_current_year" type="object">
+                                            <a name="action_open_view_state" type="object" context="{'search_default_current_year': True}">
                                                 Current Year
                                             </a>
                                         </div>
