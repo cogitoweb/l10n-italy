@@ -22,8 +22,8 @@
                                     <div class="o_kanban_card_header_title">
                                         <div class="o_primary" style="display: flex; align-items: center;">
                                             <div class="col-xs-3">
-                                                <div t-att-class="'icon1'"/>
-                                                <div t-att-class="'icon2'"/>
+                                                <div t-attf-class="record.icon1.raw_value"/>
+                                                <div t-attf-class="record.icon1.raw_value"/>
                                             </div>
                                             <a type="object" name="action_open_view_state" style="font-size: 15px;">
                                                 <field name="state"/>
