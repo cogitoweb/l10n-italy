@@ -106,12 +106,12 @@ class VirtualFatturaPAAttachmentOutState(models.Model):
             	    WHEN s.state = 'sender_error' THEN 'fa fa-bug fa-2x'
             	    WHEN s.state = 'recipient_error' THEN 'fa fa-bug fa-2x'
             	    WHEN s.state = 'rejected' THEN 'fa fa-times fa-2x'
-            	    WHEN s.state = 'validated' THEN 'fa fa-check-circle-o'
-            	    WHEN s.state = 'accepted' THEN 'fa fa-check-circle'
+            	    WHEN s.state = 'validated' THEN 'fa fa-check-circle-o fa-2x'
+            	    WHEN s.state = 'accepted' THEN 'fa fa-check-circle fa-2x'
             	END AS icon1,
             	CASE
-            	    WHEN s.state = 'sender_error' THEN 'fa-level-up fa-2x'
-            	    WHEN s.state = 'recipient_error' THEN 'fa-level-down fa-2x'
+            	    WHEN s.state = 'sender_error' THEN 'fa fa-level-up fa-2x'
+            	    WHEN s.state = 'recipient_error' THEN 'fa fa-level-down fa-2x'
             	    WHEN s.state = 'validated' THEN 'fa fa-level-down fa-2x'
             	    else ''
             	END AS icon2
