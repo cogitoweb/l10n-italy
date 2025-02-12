@@ -27,6 +27,10 @@ class VirtualFatturaPAAttachmentOutState(models.Model):
     total_fatturapa_out_current_month = fields.Integer(readonly=True)
     total_fatturapa_out_current_year = fields.Integer(readonly=True)
 
+    color = fields.Char(readonly=True)
+    icon1 = fields.Char(readonly=True)
+    icon2 = fields.Char(readonly=True)
+
     # filter methods
     @api.multi
     def action_open_view_state(self):
