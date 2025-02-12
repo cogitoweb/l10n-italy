@@ -19,6 +19,8 @@ msgstr ""
 #. module: l10n_it_fatturapa_pec
 #: selection:account.invoice,fatturapa_state:0
 #: selection:fatturapa.attachment.out,state:0
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_pec.view_fatturapa_out_attachment_search_state
+#: selection:virtual.fatturapa.attachment.out.state,state:0
 msgid "Accepted"
 msgstr "Accettato"
 
@@ -58,9 +60,41 @@ msgid "Created on"
 msgstr "Creato il"
 
 #. module: l10n_it_fatturapa_pec
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_pec.fatturapa_attachment_out_state_kanban
+msgid "Current Month"
+msgstr "Mese corrente"
+
+#. module: l10n_it_fatturapa_pec
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_pec.fatturapa_attachment_out_state_kanban
+msgid "Current Year"
+msgstr "Anno Corrente"
+
+#. module: l10n_it_fatturapa_pec
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_pec.view_fatturapa_out_attachment_search_state
+msgid "Current month"
+msgstr "Mese corrente"
+
+#. module: l10n_it_fatturapa_pec
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_pec.view_fatturapa_out_attachment_search_state
+msgid "Current week"
+msgstr "Settimana corrente"
+
+#. module: l10n_it_fatturapa_pec
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_pec.view_fatturapa_out_attachment_search_state
+msgid "Current year"
+msgstr "Anno corrente"
+
+#. module: l10n_it_fatturapa_pec
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_pec.view_fatturapa_out_attachment_search_state
+msgid "Date"
+msgstr "Data"
+
+#. module: l10n_it_fatturapa_pec
 #: selection:account.invoice,fatturapa_state:0
 #: selection:fatturapa.attachment.out,state:0
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_pec.view_fatturapa_out_attachment_search_state
 #: model:ir.ui.view,arch_db:l10n_it_fatturapa_pec.view_fatturapa_out_pec_attachment_form
+#: selection:virtual.fatturapa.attachment.out.state,state:0
 msgid "Delivered"
 msgstr "Consegnato"
 
@@ -180,6 +214,8 @@ msgstr "Nessun server PEC in ingresso trovato, configurarne uno."
 
 #. module: l10n_it_fatturapa_pec
 #: selection:fatturapa.attachment.out,state:0
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_pec.view_fatturapa_out_attachment_search_state
+#: selection:virtual.fatturapa.attachment.out.state,state:0
 msgid "Not delivered"
 msgstr "Non consegnato"
 
@@ -214,6 +250,21 @@ msgid "POP/IMAP Server"
 msgstr "Server POP/IMAP"
 
 #. module: l10n_it_fatturapa_pec
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_pec.view_fatturapa_out_attachment_search_state
+msgid "Previous month"
+msgstr "Mese precedente"
+
+#. module: l10n_it_fatturapa_pec
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_pec.view_fatturapa_out_attachment_search_state
+msgid "Previous week"
+msgstr "Settimana precedente"
+
+#. module: l10n_it_fatturapa_pec
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_pec.view_fatturapa_out_attachment_search_state
+msgid "Previous year"
+msgstr "Anno precedente"
+
+#. module: l10n_it_fatturapa_pec
 #: model:ir.ui.view,arch_db:l10n_it_fatturapa_pec.wizard_export_fatturapa_form_view_regenerate
 msgid "Re-Export"
 msgstr ""
@@ -236,11 +287,14 @@ msgstr "Pronto"
 #. module: l10n_it_fatturapa_pec
 #: selection:account.invoice,fatturapa_state:0
 #: selection:fatturapa.attachment.out,state:0
+#: selection:virtual.fatturapa.attachment.out.state,state:0
 msgid "Ready to Send"
 msgstr "Pronto per l'invio"
 
 #. module: l10n_it_fatturapa_pec
 #: selection:fatturapa.attachment.out,state:0
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_pec.view_fatturapa_out_attachment_search_state
+#: selection:virtual.fatturapa.attachment.out.state,state:0
 msgid "Rejected (PA)"
 msgstr "Rifiutato (PA)"
 
@@ -272,6 +326,8 @@ msgstr "Invia con PEC"
 
 #. module: l10n_it_fatturapa_pec
 #: selection:fatturapa.attachment.out,state:0
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_pec.view_fatturapa_out_attachment_search_state
+#: selection:virtual.fatturapa.attachment.out.state,state:0
 msgid "Sender Error"
 msgstr "Errore trasmittente"
 
@@ -283,6 +339,8 @@ msgstr "Utente trasmittente"
 #. module: l10n_it_fatturapa_pec
 #: selection:account.invoice,fatturapa_state:0
 #: selection:fatturapa.attachment.out,state:0
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_pec.view_fatturapa_out_attachment_search_state
+#: selection:virtual.fatturapa.attachment.out.state,state:0
 msgid "Sent"
 msgstr "Inviato"
 
@@ -298,6 +356,8 @@ msgstr "Inviato da"
 
 #. module: l10n_it_fatturapa_pec
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_pec.field_fatturapa_attachment_out_state
+#: model:ir.model.fields,field_description:l10n_it_fatturapa_pec.field_virtual_fatturapa_attachment_out_state_state
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_pec.view_fatturapa_out_attachment_search_state
 msgid "State"
 msgstr "Stato"
 
@@ -327,15 +387,38 @@ msgstr ""
 
 #. module: l10n_it_fatturapa_pec
 #: model:ir.model.fields,help:l10n_it_fatturapa_pec.field_account_config_settings_e_invoice_user_id
-msgid ""
-"This user will be used at supplier e-invoice creation. This setting is "
-"relevant in multi-company environments"
-msgstr ""
+msgid "This user will be used at supplier e-invoice creation. This setting is relevant in multi-company environments"
+msgstr "This user will be used at supplier e-invoice creation. This setting is relevant in multi-company environments"
+
+#. module: l10n_it_fatturapa_pec
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_pec.view_fatturapa_out_attachment_search_state
+msgid "Today"
+msgstr "Oggi"
+
+#. module: l10n_it_fatturapa_pec
+#: model:ir.model.fields,field_description:l10n_it_fatturapa_pec.field_virtual_fatturapa_attachment_out_state_total_fatturapa_out
+msgid "Total fatturapa out"
+msgstr "Total fatturapa out"
+
+#. module: l10n_it_fatturapa_pec
+#: model:ir.model.fields,field_description:l10n_it_fatturapa_pec.field_virtual_fatturapa_attachment_out_state_total_fatturapa_out_current_month
+msgid "Total fatturapa out current month"
+msgstr "Total fatturapa out current month"
+
+#. module: l10n_it_fatturapa_pec
+#: model:ir.model.fields,field_description:l10n_it_fatturapa_pec.field_virtual_fatturapa_attachment_out_state_total_fatturapa_out_current_year
+msgid "Total fatturapa out current year"
+msgstr "Total fatturapa out current year"
 
 #. module: l10n_it_fatturapa_pec
 #: model:ir.model,name:l10n_it_fatturapa_pec.model_wizard_fatturapa_send_pec
 msgid "Wizard to send multiple e-invoice PEC"
 msgstr "Procedura per inviare PEC e-fattura multiple"
+
+#. module: l10n_it_fatturapa_pec
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_pec.view_fatturapa_out_attachment_search_state
+msgid "Yesterday"
+msgstr "Ieri"
 
 #. module: l10n_it_fatturapa_pec
 #: code:addons/l10n_it_fatturapa_pec/models/fatturapa_attachment_out.py:248
