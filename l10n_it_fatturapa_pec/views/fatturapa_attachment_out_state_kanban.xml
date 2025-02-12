@@ -18,7 +18,7 @@
                     <templates>
                         <t t-name="kanban-box">
                             <div name="state">
-                                <div class="o_kanban_card_header" t-att-style="'background-color: ' + color">
+                                <div class="o_kanban_card_header" t-att-style="'background-color: ' + record.color.raw_value">
                                     <div class="o_kanban_card_header_title">
                                         <div class="o_primary" style="display: flex; align-items: center;">
                                             <div class="col-xs-3">
