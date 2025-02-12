@@ -182,7 +182,7 @@ msgstr "File e-fattura esportato"
 #. module: l10n_it_fatturapa_out
 #: model:ir.ui.menu,name:l10n_it_fatturapa_out.fatturapa_attachment_menu
 msgid "E-invoice Export Files"
-msgstr "File e-fattura esportati"
+msgstr "File e-fatture esportati"
 
 #. module: l10n_it_fatturapa_out
 #: code:addons/l10n_it_fatturapa_out/models/attachment.py:109
