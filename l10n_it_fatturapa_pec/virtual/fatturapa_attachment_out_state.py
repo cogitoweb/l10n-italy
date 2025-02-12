@@ -73,10 +73,6 @@ class VirtualFatturaPAAttachmentOutState(models.Model):
                 SELECT 'accepted'
             )
             SELECT
-                s.state,
-                coalesce(count(fao.state), 0) AS total_fatturapa_out,
-                coalesce(sum(CASE WHEN fao.create_date >= date_trunc('month', now()) THEN 1 ELSE 0 END), 0) AS total_fatturapa_out_current_month,
-                coalesce(sum(CASE WHEN fao.create_date >= date_trunc('year', now()) THEN 1 ELSE 0 END), 0) AS total_fatturapa_out_current_year,
                 CASE
             	    WHEN s.state = 'ready' THEN 1
             	    WHEN s.state = 'sent' THEN 2
@@ -86,7 +82,35 @@ class VirtualFatturaPAAttachmentOutState(models.Model):
             	    WHEN s.state = 'validated' THEN 6
             	    WHEN s.state = 'accepted' THEN 7
             	    ELSE 0
-            	END AS id
+            	END AS id,
+                s.state,
+                coalesce(count(fao.state), 0) AS total_fatturapa_out,
+                coalesce(sum(CASE WHEN fao.create_date >= date_trunc('month', now()) THEN 1 ELSE 0 END), 0) AS total_fatturapa_out_current_month,
+                coalesce(sum(CASE WHEN fao.create_date >= date_trunc('year', now()) THEN 1 ELSE 0 END), 0) AS total_fatturapa_out_current_year,
+            	CASE
+            	    WHEN s.state = 'ready' THEN '#99ccff'
+            	    WHEN s.state = 'sent' THEN '#6699ff'
+            	    WHEN s.state = 'sender_error' THEN '#ffff99'
+            	    WHEN s.state = 'recipient_error' THEN '#ffff99'
+            	    WHEN s.state = 'rejected' THEN '#ff9999'
+            	    WHEN s.state = 'validated' THEN '#99ff99'
+            	    WHEN s.state = 'accepted' THEN '#33cc33'
+            	END AS color,
+            	CASE
+            	    WHEN s.state = 'ready' THEN 'fa fa-paper-plane-o fa-2x'
+            	    WHEN s.state = 'sent' THEN 'fa fa-paper-plane fa-2x'
+            	    WHEN s.state = 'sender_error' THEN 'fa fa-bug fa-2x'
+            	    WHEN s.state = 'recipient_error' THEN 'fa fa-bug fa-2x'
+            	    WHEN s.state = 'rejected' THEN 'fa fa-times fa-2x'
+            	    WHEN s.state = 'validated' THEN 'fa fa-check-circle-o'
+            	    WHEN s.state = 'accepted' THEN 'fa fa-check-circle'
+            	END AS icon1,
+            	CASE
+            	    WHEN s.state = 'sender_error' THEN 'fa-level-up fa-2x'
+            	    WHEN s.state = 'recipient_error' THEN 'fa-level-down fa-2x'
+            	    WHEN s.state = 'validated' THEN 'fa fa-level-down fa-2x'
+            	    else ''
+            	END AS icon2
             FROM
                 states s
             LEFT JOIN fatturapa_attachment_out fao ON fao.state = s.state
@@ -94,6 +118,6 @@ class VirtualFatturaPAAttachmentOutState(models.Model):
                 s.state
             ORDER BY
                 id
-        """
+            """
 
         self.env.cr.execute(_sql_view, {'table': AsIs(view_name)})
