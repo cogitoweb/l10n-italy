@@ -70,7 +70,7 @@
         </record>
 
         <record id="fatturapa_attachment_in_overview_action" model="ir.actions.act_window">
-            <field name="name">E-Invoice Overview</field>
+            <field name="name">E-Invoice In Overview</field>
             <field name="res_model">virtual.fatturapa.attachment.in.state</field>
             <field name="view_mode">kanban</field>
             <field name="view_id" ref="fatturapa_attachment_in_state_kanban"/>
@@ -78,9 +78,9 @@
 
         <menuitem action="fatturapa_attachment_in_overview_action"
             parent="account.menu_board_journal_1"
-            name="E-invoice Overview"
+            name="E-invoice In Overview"
             id="fatturapa_attachment_in_overview_menu"
-            sequence="3" />
+            sequence="2" />
 
     </data>
 </odoo>
