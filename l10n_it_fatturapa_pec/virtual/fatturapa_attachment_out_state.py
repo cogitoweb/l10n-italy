@@ -85,25 +85,26 @@ class VirtualFatturaPAAttachmentOutState(models.Model):
             	    WHEN s.state = 'ready' THEN '#99ccff'
             	    WHEN s.state = 'sent' THEN '#6699ff'
             	    WHEN s.state = 'sender_error' THEN '#ffff99'
-            	    WHEN s.state = 'recipient_error' THEN '#ffff99'
+            	    WHEN s.state = 'recipient_error' THEN '#ffcc99'
             	    WHEN s.state = 'rejected' THEN '#ff9999'
             	    WHEN s.state = 'validated' THEN '#99ff99'
             	    WHEN s.state = 'accepted' THEN '#33cc33'
+                    ELSE ''
             	END AS color,
             	CASE
             	    WHEN s.state = 'ready' THEN 'fa fa-paper-plane-o fa-2x'
             	    WHEN s.state = 'sent' THEN 'fa fa-paper-plane fa-2x'
             	    WHEN s.state = 'sender_error' THEN 'fa fa-bug fa-2x'
-            	    WHEN s.state = 'recipient_error' THEN 'fa fa-bug fa-2x'
             	    WHEN s.state = 'rejected' THEN 'fa fa-times fa-2x'
             	    WHEN s.state = 'validated' THEN 'fa fa-check-circle-o fa-2x'
             	    WHEN s.state = 'accepted' THEN 'fa fa-check-circle fa-2x'
+                    ELSE ''
             	END AS icon1,
             	CASE
             	    WHEN s.state = 'sender_error' THEN 'fa fa-level-up fa-2x'
             	    WHEN s.state = 'recipient_error' THEN 'fa fa-level-down fa-2x'
             	    WHEN s.state = 'validated' THEN 'fa fa-level-down fa-2x'
-            	    else ''
+            	    ELSE ''
             	END AS icon2
             FROM
                 states s
