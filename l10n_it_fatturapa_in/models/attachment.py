@@ -35,7 +35,7 @@ class FatturaPAAttachmentIn(models.Model):
     registered_label = fields.Selection(
         [('registered', 'Registered'), ('to_register', 'To register')],
         string='State',
-        compute='_compute_registered_label',
+        compute='_compute_registered',
         store=True
     )
 
@@ -113,8 +113,10 @@ class FatturaPAAttachmentIn(models.Model):
                 len(att.in_invoice_ids) == att.invoices_number
             ):
                 att.registered = True
+                att.registered_label = 'registered'
             else:
                 att.registered = False
+                att.registered_label = 'to_register'
 
     def extract_attachments(self, AttachmentsData, invoice_id):
         AttachModel = self.env['fatturapa.attachments']
@@ -134,8 +136,3 @@ class FatturaPAAttachmentIn(models.Model):
                 'invoice_id': invoice_id,
             }
             AttachModel.create(_attach_dict)
-
-    @api.depends('registered')
-    def _compute_registered_label(self):
-        for record in self:
-            record.registered_label = 'registered' if record.registered else 'to_register'
