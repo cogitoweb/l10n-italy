@@ -8,7 +8,7 @@
 
 {
     'name': 'ITA - Fattura elettronica - Ricezione',
-    'version': '10.0.3.0.0',
+    'version': '10.0.3.1.0',
     'category': 'Localization/Italy',
     'summary': 'Ricezione fatture elettroniche',
     'author': 'Agile Business Group, Innoviu, '
@@ -27,6 +27,7 @@
         'security/ir.model.access.csv',
         'wizard/link_to_existing_invoice.xml',
         'views/company_view.xml',
+        'views/fatturapa_attachment_in_state_kanban.xml',
         'security/rules.xml'
     ],
     "installable": True

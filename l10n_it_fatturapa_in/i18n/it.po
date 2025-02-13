@@ -203,6 +203,11 @@ msgid "Created by"
 msgstr "Creato da"
 
 #. module: l10n_it_fatturapa_in
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_in.view_fatturapa_in_attachment_search
+msgid "Created date"
+msgstr "Data di creazione"
+
+#. module: l10n_it_fatturapa_in
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_einvoice_line_create_date
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_einvoice_line_other_data_create_date
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_fatturapa_article_code_create_date
@@ -219,12 +224,35 @@ msgid "Creation"
 msgstr "Creazione"
 
 #. module: l10n_it_fatturapa_in
-#: code:addons/l10n_it_fatturapa_in/wizard/wizard_import_fatturapa.py:283
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_in.fatturapa_attachment_in_state_kanban
+msgid "Current Month"
+msgstr "Mese corrente"
+
+#. module: l10n_it_fatturapa_in
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_in.fatturapa_attachment_in_state_kanban
+msgid "Current Year"
+msgstr "Anno Corrente"
+
+#. module: l10n_it_fatturapa_in
+#: code:addons/l10n_it_fatturapa_in/wizard/wizard_import_fatturapa.py:287
 #, python-format
-msgid ""
-"Current invoice is from {} with REA Code {}. Yet it seems that partners {} "
-"have the same REA Code. This code should be unique; please fix it."
-msgstr ""
+msgid "Current invoice is from {} with REA Code {}. Yet it seems that partners {} have the same REA Code. This code should be unique; please fix it."
+msgstr "La fattura corrente proviene da {} con il codice REA {}. Tuttavia, sembra che i partner {} abbiano lo stesso codice REA. Questo codice dovrebbe essere univoco; prego correggere."
+
+#. module: l10n_it_fatturapa_in
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_in.view_fatturapa_in_attachment_search
+msgid "Current month"
+msgstr "Mese corrente"
+
+#. module: l10n_it_fatturapa_in
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_in.view_fatturapa_in_attachment_search
+msgid "Current week"
+msgstr "Settimana corrente"
+
+#. module: l10n_it_fatturapa_in
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_in.view_fatturapa_in_attachment_search
+msgid "Current year"
+msgstr "Anno corrente"
 
 #. module: l10n_it_fatturapa_in
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_einvoice_line_other_data_name
@@ -234,7 +262,12 @@ msgstr "Tipo dati"
 #. module: l10n_it_fatturapa_in
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_fatturapa_attachment_in_db_datas
 msgid "Database Data"
-msgstr "Dati database"
+msgstr "Dati Database"
+
+#. module: l10n_it_fatturapa_in
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_in.view_fatturapa_in_attachment_search
+msgid "Date"
+msgstr "Data"
 
 #. module: l10n_it_fatturapa_in
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_einvoice_line_other_data_date_ref
@@ -307,7 +340,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_account_invoice_e_invoice_received_date
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_fatturapa_attachment_in_e_invoice_received_date
 msgid "E-Bill Received Date"
-msgstr ""
+msgstr "E-Bill Received Date"
+
+#. module: l10n_it_fatturapa_in
+#: model:ir.actions.act_window,name:l10n_it_fatturapa_in.fatturapa_attachment_in_overview_action
+msgid "E-Invoice In Overview"
+msgstr "Panoramica e-fatture in ingresso"
 
 #. module: l10n_it_fatturapa_in
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_account_invoice_e_invoice_amount_tax
@@ -388,6 +426,11 @@ msgstr "Livello di dettaglio e-fatture"
 #: model:ir.model,name:l10n_it_fatturapa_in.model_discount_rise_price
 msgid "E-invoice Discount Supplement Data"
 msgstr "Dati sconto maggiorazione e-fattura"
+
+#. module: l10n_it_fatturapa_in
+#: model:ir.ui.menu,name:l10n_it_fatturapa_in.fatturapa_attachment_in_overview_menu
+msgid "E-invoice In Overview"
+msgstr "Panoramica e-fatture in ingresso"
 
 #. module: l10n_it_fatturapa_in
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_account_invoice_e_invoice_date_invoice
@@ -765,20 +808,36 @@ msgid "Preview link"
 msgstr "Collegamento di anteprima"
 
 #. module: l10n_it_fatturapa_in
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_in.view_fatturapa_in_attachment_search
+msgid "Previous month"
+msgstr "Mese precedente"
+
+#. module: l10n_it_fatturapa_in
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_in.view_fatturapa_in_attachment_search
+msgid "Previous week"
+msgstr "Settimana precedente"
+
+#. module: l10n_it_fatturapa_in
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_in.view_fatturapa_in_attachment_search
+msgid "Previous year"
+msgstr "Anno precedente"
+
+#. module: l10n_it_fatturapa_in
+#: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_fatturapa_attachment_in_priority
+msgid "Priority"
+msgstr "Priorità"
+
+#. module: l10n_it_fatturapa_in
 #: model:ir.model.fields,help:l10n_it_fatturapa_in.field_account_config_settings_cassa_previdenziale_product_id
 #: model:ir.model.fields,help:l10n_it_fatturapa_in.field_res_company_cassa_previdenziale_product_id
 msgid "Product used to model DatiCassaPrevidenziale XML element on bills."
-msgstr ""
-"Prodotto usato come modello per l'elemento XML DatiCassaPrevidenziale delle "
-"fatture."
+msgstr "Prodotto usato come modello per l'elemento XML DatiCassaPrevidenziale delle fatture."
 
 #. module: l10n_it_fatturapa_in
 #: model:ir.model.fields,help:l10n_it_fatturapa_in.field_account_config_settings_sconto_maggiorazione_product_id
 #: model:ir.model.fields,help:l10n_it_fatturapa_in.field_res_company_sconto_maggiorazione_product_id
 msgid "Product used to model ScontoMaggiorazione XML element on bills."
-msgstr ""
-"Prodotto usato come modello per l'elemento XML ScontoMaggiorazione delle "
-"fatture."
+msgstr "Prodotto usato come modello per l'elemento XML ScontoMaggiorazione delle fatture."
 
 #. module: l10n_it_fatturapa_in
 #: model:ir.ui.view,arch_db:l10n_it_fatturapa_in.view_invoice_form_fatturapa_in
@@ -805,7 +864,12 @@ msgstr "Codice provincia dell'ufficio REA ( %s ) non presente nel sistema"
 #. module: l10n_it_fatturapa_in
 #: selection:res.company,in_invoice_registration_date:0
 msgid "Received Date"
-msgstr ""
+msgstr "Received Date"
+
+#. module: l10n_it_fatturapa_in
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_in.view_fatturapa_in_attachment_search
+msgid "Receiving date"
+msgstr "Data ricezione"
 
 #. module: l10n_it_fatturapa_in
 #: code:addons/l10n_it_fatturapa_in/wizard/wizard_import_fatturapa.py:215
@@ -814,7 +878,10 @@ msgid "Register Province ( %s ) not present in your system"
 msgstr "Provincia albo ( %s ) non presente nel sistema"
 
 #. module: l10n_it_fatturapa_in
+#: selection:fatturapa.attachment.in,registered_label:0
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_fatturapa_attachment_in_registered
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_in.view_fatturapa_in_attachment_search
+#: selection:virtual.fatturapa.attachment.in.state,state:0
 msgid "Registered"
 msgstr "Registrata"
 
@@ -903,7 +970,14 @@ msgstr "Tipo cessione prestazione"
 #. module: l10n_it_fatturapa_in
 #: model:ir.ui.view,arch_db:l10n_it_fatturapa_in.view_invoice_form_fatturapa_in
 msgid "Stable Organization"
-msgstr "Stabile organizzazione"
+msgstr "Organizzazione stabile"
+
+#. module: l10n_it_fatturapa_in
+#: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_fatturapa_attachment_in_registered_label
+#: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_virtual_fatturapa_attachment_in_state_state
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_in.view_fatturapa_in_attachment_search
+msgid "State"
+msgstr "Stato"
 
 #. module: l10n_it_fatturapa_in
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_fatturapa_attachment_in_store_fname
@@ -1004,12 +1078,21 @@ msgid "To Register"
 msgstr "Da registrare"
 
 #. module: l10n_it_fatturapa_in
-#: code:addons/l10n_it_fatturapa_in/wizard/wizard_import_fatturapa.py:344
+#: selection:fatturapa.attachment.in,registered_label:0
+#: selection:virtual.fatturapa.attachment.in.state,state:0
+msgid "To register"
+msgstr "Da registrare"
+
+#. module: l10n_it_fatturapa_in
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_in.view_fatturapa_in_attachment_search
+msgid "Today"
+msgstr "Oggi"
+
+#. module: l10n_it_fatturapa_in
+#: code:addons/l10n_it_fatturapa_in/wizard/wizard_import_fatturapa.py:348
 #, python-format
-msgid ""
-"Too many taxes with percentage %s and nature %s found. Tax %s with lower "
-"priority has been set on invoice lines."
-msgstr ""
+msgid "Too many taxes with percentage %s and nature %s found. Tax %s with lower priority has been set on invoice lines."
+msgstr "Too many taxes with percentage %s and nature %s found. Tax %s with lower priority has been set on invoice lines."
 
 #. module: l10n_it_fatturapa_in
 #: code:addons/l10n_it_fatturapa_in/wizard/wizard_import_fatturapa.py:369
@@ -1184,13 +1267,14 @@ msgid "Xml Attachment"
 msgstr "Allegato XML"
 
 #. module: l10n_it_fatturapa_in
+#: model:ir.ui.view,arch_db:l10n_it_fatturapa_in.view_fatturapa_in_attachment_search
+msgid "Yesterday"
+msgstr "Ieri"
+
+#. module: l10n_it_fatturapa_in
 #: model:ir.model.fields,help:l10n_it_fatturapa_in.field_fatturapa_attachment_in_type
-msgid ""
-"You can either upload a file from your computer or copy/paste an internet "
-"link to your file."
-msgstr ""
-"È possibile caricare un file dal computer oppure fare copia/incolla di un "
-"collegamento Internet nel file."
+msgid "You can either upload a file from your computer or copy/paste an internet link to your file."
+msgstr "Puoi inviare un file dal computer o copiare/incollare un indirizzo Internet che è collegato al tuo file."
 
 #. module: l10n_it_fatturapa_in
 #: code:addons/l10n_it_fatturapa_in/wizard/link_to_existing_invoice.py:119

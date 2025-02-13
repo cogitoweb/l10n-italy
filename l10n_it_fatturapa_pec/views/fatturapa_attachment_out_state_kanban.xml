@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- fatturapa kanban -->
+        <record id="fatturapa_attachment_out_state_kanban" model="ir.ui.view">
+            <field name="name">virtual.fatturapa.attachment.out.state.kanban</field>
+            <field name="model">virtual.fatturapa.attachment.out.state</field>
+            <field name="arch" type="xml">
+
+                <kanban class="o_kanban_view oe_background_grey o_kanban_dashboard o_cannot_create o_kanban_ungrouped" create="0">
+
+                    <field name="state"/>
+                    <field name="color"/>
+                    <field name="icon1"/>
+                    <field name="icon2"/>
+
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div name="state">
+                                <div class="o_kanban_card_header" t-att-style="'background-color: ' + record.color.raw_value">
+                                    <div class="o_kanban_card_header_title">
+                                        <div class="o_primary" style="display: flex; align-items: center;">
+                                            <div class="col-xs-3">
+                                                <div t-att-class="record.icon1.raw_value"/>
+                                                <div t-att-class="record.icon2.raw_value"/>
+                                            </div>
+                                            <a type="object" name="action_open_view_state" style="font-size: 15px;">
+                                                <field name="state"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div> <!-- /card_header -->
+                                <div class="container o_kanban_card_content o_visible">
+                                    <div class="row" style="font-size: 20px;">
+                                        <div class="col-xs-9">
+                                            <a name="action_open_view_state" type="object" context="{'search_default_current_month': True}">
+                                                Current Month
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-3" style="font-weight: bold; text-align: right;">
+                                            <field name="total_fatturapa_out_current_month"/>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="font-size: 20px;">
+                                        <div class="col-xs-9">
+                                            <a name="action_open_view_state" type="object" context="{'search_default_current_year': True}">
+                                                Current Year
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-3" style="font-weight: bold; text-align: right;">
+                                            <field name="total_fatturapa_out_current_year"/>
+                                        </div>
+                                    </div>
+                                </div> <!-- /card_content -->
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+
+            </field>
+        </record>
+
+        <record id="fatturapa_attachment_out_overview_action" model="ir.actions.act_window">
+            <field name="name">E-Invoice Out Overview</field>
+            <field name="res_model">virtual.fatturapa.attachment.out.state</field>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="fatturapa_attachment_out_state_kanban"/>
+        </record>
+
+        <menuitem action="fatturapa_attachment_out_overview_action"
+            parent="account.menu_board_journal_1"
+            name="E-invoice Out Overview"
+            id="fatturapa_attachment_out_overview_menu"
+            sequence="3" />
+
+    </data>
+</odoo>

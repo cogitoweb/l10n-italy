@@ -32,6 +32,13 @@ class FatturaPAAttachmentIn(models.Model):
     registered = fields.Boolean(
         "Registered", compute="_compute_registered", store=True)
 
+    registered_label = fields.Selection(
+        [('registered', 'Registered'), ('to_register', 'To register')],
+        string='State',
+        compute='_compute_registered',
+        store=True
+    )
+
     e_invoice_received_date = fields.Datetime(string='E-Bill Received Date')
 
     e_invoice_validation_error = fields.Boolean(
@@ -106,8 +113,10 @@ class FatturaPAAttachmentIn(models.Model):
                 len(att.in_invoice_ids) == att.invoices_number
             ):
                 att.registered = True
+                att.registered_label = 'registered'
             else:
                 att.registered = False
+                att.registered_label = 'to_register'
 
     def extract_attachments(self, AttachmentsData, invoice_id):
         AttachModel = self.env['fatturapa.attachments']
