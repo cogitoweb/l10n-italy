@@ -37,16 +37,11 @@
                 </page>
                 <page string="Electronic Invoice"
                     attrs="{'invisible': [('electronic_invoice_subjected', '=', False)]}">
-                    <group>
-                        <group string="Results">
-                            <field name="fatturapa_attachment_out_id"/>
-                            <field name="has_pdf_invoice_print"
-                                   attrs="{'invisible': [('fatturapa_attachment_out_id', '=', False)]}"/>
-                        </group>
+                    <group string="Results">
+                        <field name="fatturapa_attachment_out_id"/>
+                        <field name="has_pdf_invoice_print"
+                               attrs="{'invisible': [('fatturapa_attachment_out_id', '=', False)]}"/>
                     </group>
-                </page>
-                <page string="Electronic Invoice Attachments"
-                    attrs="{'invisible': [('electronic_invoice_subjected', '=', False)]}">
                     <group string="Attachments">
                         <field name="fatturapa_doc_attachments" nolabel="1" >
                             <tree string="Attachments">
