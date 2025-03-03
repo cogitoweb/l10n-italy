@@ -161,10 +161,10 @@ class TestDichiarazioneIntento(TransactionCase):
         self.assertFalse(dichiarazione_model.get_valid())
         records = dichiarazione_model.get_valid(
             type_d='out', partner_id=self.partner1.id, date=self.today_date)
-        self.assertEquals(len(records), 1)
+        self.assertEqual(len(records), 1)
         records = dichiarazione_model.get_valid(
             type_d='out', partner_id=self.partner2.id, date=self.today_date)
-        self.assertEquals(len(records), 2)
+        self.assertEqual(len(records), 2)
 
     def test_dichiarazione_state_change(self):
         self.assertEqual(self.dichiarazione1.state, 'valid')

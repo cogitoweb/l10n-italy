@@ -203,7 +203,7 @@ class AccountMove(models.Model):
 
         wt_codes = []
         if wt_competence:
-            for key, val in wt_competence.items():
+            for key, val in list(wt_competence.items()):
                 wt_codes.append(val)
         res = {
             'partner_id': partner and partner.id or False,
@@ -397,7 +397,7 @@ class AccountInvoice(models.Model):
         self.ensure_one()
         wt_taxes_grouped = self.get_wt_taxes_values()
         wt_tax_lines = [(5, 0)]
-        for tax in wt_taxes_grouped.values():
+        for tax in list(wt_taxes_grouped.values()):
             wt_tax_lines.append((0, 0, tax))
         self.withholding_tax_line_ids = wt_tax_lines
         if wt_tax_lines:

@@ -32,8 +32,8 @@ def create_withholding_data_lines(env):
         SELECT {values}
         FROM account_invoice AS ai
         WHERE ai.{ftpa_withholding_type} IS NOT NULL;""".format(
-            columns=','.join(mapping.keys()),
-            values=','.join(mapping.values()),
+            columns=','.join(list(mapping.keys())),
+            values=','.join(list(mapping.values())),
             ftpa_withholding_type=column_wht_type)
     openupgrade.logged_query(env.cr, sql.SQL(query))
 

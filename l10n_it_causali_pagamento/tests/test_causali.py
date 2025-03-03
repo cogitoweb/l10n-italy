@@ -20,7 +20,7 @@ class TestCausali(TransactionCase):
         name = self.causale_b.name_get()
         self.assertEqual(name, [(
             self.causale_b.id,
-            u"B - Utilizzazione economica, da parte dell'autore ..."
+            "B - Utilizzazione economica, da parte dell'autore ..."
         )])
 
     def test_renaming_causali(self):

@@ -21,9 +21,9 @@
 ##############################################################################
 
 import time
-from openerp import fields, models
-from openerp.tools.translate import _
-from openerp.exceptions import Warning
+from odoo import fields, models
+from odoo.tools.translate import _
+from odoo.exceptions import Warning
 
 
 class AccountInvoice(models.Model):

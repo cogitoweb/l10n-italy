@@ -76,7 +76,7 @@ class TestL10nItWithholdingTaxPaymentOrder(TransactionCase):
         action = self.invoice.create_account_payment_line()
         payment_order = self.env['account.payment.order'].browse(
             action['res_id'])
-        self.assertEquals(len(payment_order.payment_line_ids), 1)
+        self.assertEqual(len(payment_order.payment_line_ids), 1)
         self.assertEqual(
             payment_order.payment_line_ids.amount_currency,
             self.invoice.amount_net_pay)

@@ -56,7 +56,7 @@ class WizardExportFatturapa(models.TransientModel):
                     if key not in inv_lines_by_ddt:
                         inv_lines_by_ddt[key] = []
                     inv_lines_by_ddt[key].append(line.ftpa_line_number)
-            for key in sorted(inv_lines_by_ddt.iterkeys()):
+            for key in sorted(inv_lines_by_ddt.keys()):
                 DatiDDT = DatiDDTType(
                     NumeroDDT=key[0],
                     DataDDT=key[1]

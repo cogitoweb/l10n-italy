@@ -147,8 +147,8 @@ class AccountInvoice(models.Model):
                 if tax not in grouped_lines[force_declaration]:
                     grouped_lines[force_declaration].update({tax: []})
                 grouped_lines[force_declaration][tax].append(line)
-            for force_declaration in grouped_lines.keys():
-                for tax, lines in grouped_lines[force_declaration].items():
+            for force_declaration in list(grouped_lines.keys()):
+                for tax, lines in list(grouped_lines[force_declaration].items()):
                     # ----- Create a detail in dichiarazione
                     #       for every tax group
                     if invoice.type in ('out_invoice', 'in_refund'):

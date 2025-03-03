@@ -21,7 +21,7 @@ class TestInvoiceDueCost(riba_common.TestRibaCommon):
         # ---- Validate Invoice
         self.invoice.action_invoice_open()
         # ---- Test Invoice has 2 line
-        self.assertEquals(len(self.invoice.invoice_line_ids), 3)
+        self.assertEqual(len(self.invoice.invoice_line_ids), 3)
         # ---- Test Invoice Line for service cost
         self.assertEqual(self.invoice.invoice_line_ids[1].product_id.id,
                          self.service_due_cost.id)
@@ -47,7 +47,7 @@ class TestInvoiceDueCost(riba_common.TestRibaCommon):
         self.invoice2.action_invoice_open()
         # ---- Test Invoice has 1 line, no due cost add because it's add on
         # ---- firts due for partner
-        self.assertEquals(len(self.invoice2.invoice_line_ids), 1)
+        self.assertEqual(len(self.invoice2.invoice_line_ids), 1)
 
     def test_delete_due_cost_line(self):
         # ---- Set Service in Company Config

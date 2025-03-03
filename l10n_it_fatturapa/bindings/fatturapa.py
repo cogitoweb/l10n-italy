@@ -92,7 +92,7 @@ def CreateFromDocument(xml_string):
 
     # remove timezone from type `xs:date` if any or
     # pyxb will fail to compare with
-    for path, mandatory in date_types.items():
+    for path, mandatory in list(date_types.items()):
         for element in root.xpath(path):
             result = pyxb.binding.datatypes.date(element.text)
             if result.tzinfo is not None:
@@ -104,7 +104,7 @@ def CreateFromDocument(xml_string):
                 _logger.warn(msg)
 
     # remove bogus dates accepted by ADE but not by python
-    for path, mandatory in datetime_types.items():
+    for path, mandatory in list(datetime_types.items()):
         for element in root.xpath(path):
             try:
                 pyxb.binding.datatypes.dateTime(element.text)

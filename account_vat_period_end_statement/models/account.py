@@ -131,12 +131,12 @@ class AccountVatPeriodEndStatement(models.Model):
             payment_lines = []
             if statement.move_id.exists():
                 for line in statement.move_id.line_ids:
-                    payment_lines.extend(filter(None, [
+                    payment_lines.extend([_f for _f in [
                         rp.credit_move_id.id for rp in line.matched_credit_ids
-                    ]))
-                    payment_lines.extend(filter(None, [
+                    ] if _f])
+                    payment_lines.extend([_f for _f in [
                         rp.debit_move_id.id for rp in line.matched_debit_ids
-                    ]))
+                    ] if _f])
             statement.payment_ids = self.env['account.move.line'].browse(
                 list(set(payment_lines)))
 

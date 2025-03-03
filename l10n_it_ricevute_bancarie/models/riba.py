@@ -275,9 +275,9 @@ class RibaListLine(models.Model):
                 riba_line.state == 'unsolved'
             ):
                 for line in riba_line.acceptance_move_id.line_ids:
-                    payment_lines.extend(filter(None, [
+                    payment_lines.extend([_f for _f in [
                         rp.credit_move_id.id for rp in line.matched_credit_ids
-                    ]))
+                    ] if _f])
             riba_line.payment_ids = self.env['account.move.line'].browse(
                 list(set(payment_lines)))
 
@@ -389,7 +389,7 @@ class RibaListLine(models.Model):
 
             settlement_move_amount = settlement_move_line.debit
 
-            move_ref = u"Settlement RIBA {} - {}".format(
+            move_ref = "Settlement RIBA {} - {}".format(
                 riba_line.distinta_id.name,
                 riba_line.partner_id.name,
             )

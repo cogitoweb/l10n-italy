@@ -113,7 +113,7 @@ class WelfareFundType(models.Model):
         for record in self:
             name = record.name
             if record.name and record.description:
-                name = u'[%s] %s' % (record.name, record.description)
+                name = '[%s] %s' % (record.name, record.description)
             record.display_name = name
 
 

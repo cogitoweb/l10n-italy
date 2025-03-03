@@ -959,7 +959,7 @@ class WizardImportFatturapa(models.TransientModel):
             'invoice': FatturaBody.DatiGenerali.DatiFattureCollegate,
         }
 
-        for rel_doc_key, rel_doc_data in rel_docs_dict.items():
+        for rel_doc_key, rel_doc_data in list(rel_docs_dict.items()):
             if not rel_doc_data:
                 continue
             for rel_doc in rel_doc_data:
@@ -1300,7 +1300,7 @@ class WizardImportFatturapa(models.TransientModel):
 
             if Delivery.IndirizzoResa:
                 delivery_dict['delivery_address'] = (
-                    u'{0}, {1}\n{2} - {3}\n{4} {5}'.format(
+                    '{0}, {1}\n{2} - {3}\n{4} {5}'.format(
                         Delivery.IndirizzoResa.Indirizzo or '',
                         Delivery.IndirizzoResa.NumeroCivico or '',
                         Delivery.IndirizzoResa.CAP or '',

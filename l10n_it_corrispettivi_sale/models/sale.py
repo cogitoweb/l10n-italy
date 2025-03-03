@@ -50,7 +50,7 @@ class SaleOrder(models.Model):
         company_id = self._context \
             .get('company_id', self.env.user.company_id.id)
         domain = [
-            ('type', 'in', filter(None, map(TYPE2JOURNAL.get, inv_types))),
+            ('type', 'in', [_f for _f in map(TYPE2JOURNAL.get, inv_types) if _f]),
             ('company_id', '=', company_id),
             ('corrispettivi', '=', False)  # with this tiny modification
         ]

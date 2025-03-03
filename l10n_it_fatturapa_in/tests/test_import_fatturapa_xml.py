@@ -158,8 +158,8 @@ class TestFatturaPAXMLValidation(FatturapaCommon):
                     e_line.cod_article_ids[0].code_val, '12345')
         self.assertEqual(
             invoice.inconsistencies,
-            u"Company Name field contains 'Societa' Alpha SRL'. "
-            u"Your System contains 'SOCIETA' ALPHA SRL'\n\n")
+            "Company Name field contains 'Societa' Alpha SRL'. "
+            "Your System contains 'SOCIETA' ALPHA SRL'\n\n")
 
     def test_05_xml_import(self):
         res = self.run_wizard('test5', 'IT05979361218_003.xml')
@@ -286,12 +286,12 @@ class TestFatturaPAXMLValidation(FatturapaCommon):
         invoice2 = self.invoice_model.browse(invoice2_id)
         self.assertEqual(
             invoice1.inconsistencies,
-            u"Company Name field contains 'Societa' Alpha SRL'. "
-            u"Your System contains 'SOCIETA' ALPHA SRL'\n\n")
+            "Company Name field contains 'Societa' Alpha SRL'. "
+            "Your System contains 'SOCIETA' ALPHA SRL'\n\n")
         self.assertEqual(
             invoice2.inconsistencies,
-            u"Company Name field contains 'Societa' Alpha SRL'. "
-            u"Your System contains 'SOCIETA' ALPHA SRL'\n\n")
+            "Company Name field contains 'Societa' Alpha SRL'. "
+            "Your System contains 'SOCIETA' ALPHA SRL'\n\n")
 
     def test_14_xml_import(self):
         # check: no tax code found , write inconsisteance and anyway
@@ -317,9 +317,9 @@ class TestFatturaPAXMLValidation(FatturapaCommon):
         res = self.run_wizard('test15', 'IT05979361218_009.xml')
         invoice_id = res.get('domain')[0][2][0]
         invoice = self.invoice_model.browse(invoice_id)
-        self.assertAlmostEquals(invoice.withholding_tax_amount, 1)
-        self.assertAlmostEquals(invoice.amount_total, 6.1)
-        self.assertAlmostEquals(invoice.amount_net_pay, 5.1)
+        self.assertAlmostEqual(invoice.withholding_tax_amount, 1)
+        self.assertAlmostEqual(invoice.amount_total, 6.1)
+        self.assertAlmostEqual(invoice.amount_net_pay, 5.1)
 
     def test_16_xml_import(self):
         # file B2B downloaded from
@@ -511,9 +511,9 @@ class TestFatturaPAXMLValidation(FatturapaCommon):
         invoice_id = res.get('domain')[0][2][0]
         invoice = self.invoice_model.browse(invoice_id)
         self.assertTrue(len(invoice.ftpa_withholding_ids), 2)
-        self.assertAlmostEquals(invoice.amount_total, 1220.0)
-        self.assertAlmostEquals(invoice.withholding_tax_amount, 86.0)
-        self.assertAlmostEquals(invoice.amount_net_pay, 1134.0)
+        self.assertAlmostEqual(invoice.amount_total, 1220.0)
+        self.assertAlmostEqual(invoice.withholding_tax_amount, 86.0)
+        self.assertAlmostEqual(invoice.amount_net_pay, 1134.0)
 
     def test_01_xml_link(self):
         """

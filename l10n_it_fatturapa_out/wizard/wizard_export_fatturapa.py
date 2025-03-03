@@ -136,7 +136,7 @@ class WizardExportFatturapa(models.TransientModel):
             msg = _(
                 'FatturaElettronicaHeader.DatiTrasmissione.'
                 'ProgressivoInvio:\n%s'
-            ) % unicode(e)
+            ) % str(e)
             raise UserError(msg)
         return file_id
 
@@ -866,7 +866,7 @@ class WizardExportFatturapa(models.TransientModel):
                 res[invoice.partner_id] = []
             res[invoice.partner_id].append(invoice.id)
 
-        for partner_id in res.keys():
+        for partner_id in list(res.keys()):
             if partner_id.max_invoice_in_xml:
                 res[partner_id] = list(
                     split_list(res[partner_id], partner_id.max_invoice_in_xml))
@@ -913,7 +913,7 @@ class WizardExportFatturapa(models.TransientModel):
 
             number = self.setProgressivoInvio(fatturapa, attach=attach)
         except (SimpleFacetValueError, SimpleTypeValueError) as e:
-            raise UserError(unicode(e))
+            raise UserError(str(e))
         return fatturapa, number
 
     def exportFatturaPA(self):

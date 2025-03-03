@@ -14,7 +14,7 @@ class TestAccountTaxKind(TransactionCase):
     def test_compute_display_name(self):
         self.assertEqual(
             self.tax_kind_n1.display_name,
-            u'[%s] %s' % (self.tax_kind_n1.code, self.tax_kind_n1.name))
+            '[%s] %s' % (self.tax_kind_n1.code, self.tax_kind_n1.name))
 
     def test_name_search(self):
         result = self.env['account.tax.kind'].name_search('Escluse ex art. 15')

@@ -391,7 +391,7 @@ class AccountInvoice(models.Model):
             if lines_to_split:
                 # tot intrastat
                 amount_tot_intrastat = 0
-                for key, i_line in i_line_by_code.items():
+                for key, i_line in list(i_line_by_code.items()):
                     amount_tot_intrastat += i_line['amount_currency']
 
                 # amount to add
@@ -399,7 +399,7 @@ class AccountInvoice(models.Model):
                     amount_to_split = amount_to_split_residual = \
                         line.price_subtotal
                     i = 0
-                    for key, i_line in i_line_by_code.items():
+                    for key, i_line in list(i_line_by_code.items()):
                         i += 1
                         # competence
                         if i == len(i_line_by_code):
@@ -418,7 +418,7 @@ class AccountInvoice(models.Model):
 
                         amount_to_split_residual -= amount_competence
 
-            for key, val in i_line_by_code.items():
+            for key, val in list(i_line_by_code.items()):
                 intrastat_lines.append((0, 0, val))
             if intrastat_lines:
                 inv.intrastat_line_ids = intrastat_lines

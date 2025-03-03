@@ -26,7 +26,7 @@ from osv import fields, osv
 import decimal_precision as dp
 from decimal import *
 import time
-from openerp.tools.translate import _
+from odoo.tools.translate import _
 
 class account_tax(osv.osv):
 
@@ -147,7 +147,7 @@ class account_invoice_tax(osv.osv):
         tax_obj = self.pool.get('account.tax')
         tax_code_obj = self.pool.get('account.tax.code')
         grouped_base = {}
-        for inv_tax in tax_grouped.values():
+        for inv_tax in list(tax_grouped.values()):
             if inv_tax['tax_code_id']:
                 main_tax = tax_obj.get_main_tax(tax_obj.get_account_tax_by_tax_code(
                     tax_code_obj.browse(cr, uid, inv_tax['tax_code_id'])))
@@ -163,7 +163,7 @@ class account_invoice_tax(osv.osv):
         for tax_rate in grouped_base:
             real_total += grouped_base[tax_rate] * tax_rate
         real_total = cur_obj.round(cr, uid, cur, real_total)
-        for inv_tax in tax_grouped.values():
+        for inv_tax in list(tax_grouped.values()):
             invoice_total += inv_tax['amount']
         return real_total - invoice_total
 
@@ -179,13 +179,13 @@ class account_invoice_tax(osv.osv):
         if cur_obj.is_zero(cr, uid, cur, tax_difference):
             return tax_grouped
         company_currency = invoice.company_id.currency_id.id
-        for inv_tax in tax_grouped.values():
+        for inv_tax in list(tax_grouped.values()):
             # parte detraibile
             if not inv_tax['base_code_id'] and inv_tax['tax_code_id']:
                 ded_tax = tax_obj.get_account_tax_by_tax_code(
                     tax_code_obj.browse(cr, uid, inv_tax['tax_code_id']))
                 tax = tax_obj.get_main_tax(ded_tax)
-                for inv_tax_2 in tax_grouped.values():
+                for inv_tax_2 in list(tax_grouped.values()):
                     # parte indetraibile
                     if inv_tax_2['base_code_id'] and not inv_tax_2['tax_code_id']:
                         main_tax = tax_obj.get_main_tax(tax_obj.get_account_tax_by_base_code(

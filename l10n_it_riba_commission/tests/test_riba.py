@@ -120,7 +120,7 @@ class TestRiBa(TestRibaCommon):
                   dateutil.relativedelta.relativedelta(months=1))})
             wizard.action_settle()
             settlements = self.settle_model.search([('state', '=', 'settled')])
-            self.assertEquals(len(settlements), 0)
+            self.assertEqual(len(settlements), 0)
 
             # Validate the RiBa
             amount = sum(line.amount for line in riba_list.line_ids)
@@ -172,4 +172,4 @@ class TestRiBa(TestRibaCommon):
                     dateutil.relativedelta.relativedelta(months=1))})
             wizard.action_settle()
             settlements = self.settle_model.search([('state', '=', 'settled')])
-            self.assertEquals(len(settlements), 1)
+            self.assertEqual(len(settlements), 1)

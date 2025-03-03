@@ -4,7 +4,7 @@
 # Generated 2020-09-05 15:32:27.026450 by PyXB version 1.2.6 using Python 2.7.18.final.0
 # Namespace http://www.w3.org/2000/09/xmldsig# [xmlns:ds]
 
-from __future__ import unicode_literals
+
 import logging
 import io
 

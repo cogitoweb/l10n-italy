@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 
-from openerp import api, SUPERUSER_ID
+from odoo import api, SUPERUSER_ID
 
 
 def migrate(cr, version):
