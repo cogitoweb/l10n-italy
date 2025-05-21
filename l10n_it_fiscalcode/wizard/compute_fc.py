@@ -11,12 +11,12 @@ import datetime
 _logger = logging.getLogger(__name__)
 
 try:
-    from codicefiscale import build
+    from codicefiscale import codicefiscale
 except ImportError:
     _logger.warning(
-        'codicefiscale library not found. '
-        'If you plan to use it, please install the codicefiscale library '
-        'from https://pypi.python.org/pypi/codicefiscale')
+        'python-codicefiscale library not found. '
+        'If you plan to use it, please install the python-codicefiscale library '
+        'from https://pypi.org/project/python-codicefiscale')
 
 
 class WizardComputeFc(models.TransientModel):
@@ -147,8 +147,13 @@ class WizardComputeFc(models.TransientModel):
             if not nat_code:
                 raise UserError(_('National code is missing'))
             birth_date = datetime.datetime.strptime(f.birth_date, "%Y-%m-%d")
-            c_f = build(f.fiscalcode_surname, f.fiscalcode_firstname,
-                        birth_date, f.sex, nat_code)
+            c_f = codicefiscale.encode(
+                lastname=f.fiscalcode_surname,
+                firstname=f.fiscalcode_firstname,
+                birthdate=birth_date,
+                gender=f.sex,
+                birthplace=nat_code
+            )
             if partner.fiscalcode and partner.fiscalcode != c_f:
                 raise UserError(_(
                     'Existing fiscal code %(partner_fiscalcode)s is different '
