@@ -14,7 +14,7 @@
         'base_vat'
     ],
     'external_dependencies': {
-        'python': ['python-codicefiscale'],
+        'python': ['codicefiscale'],
     },
     'data': [
         'view/fiscalcode_view.xml',
