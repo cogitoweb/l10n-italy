@@ -352,7 +352,7 @@ msgstr "Creado el"
 #: model:ir.ui.view,arch_db:l10n_it_ddt.view_ddt_invoicing
 #: model:ir.ui.view,arch_db:l10n_it_ddt.view_order_form_view_ddt
 msgid "DDT"
-msgstr ""
+msgstr "Albaranes"
 
 #. module: l10n_it_ddt
 #: model:ir.actions.act_window,name:l10n_it_ddt.action_ddt_create_invoice
