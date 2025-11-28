@@ -24,8 +24,8 @@ re_base64 = re.compile(
 
 
 def is_base64(s):
-    s = s or ""
-    s = s.replace("\r", "").replace("\n", "")
+    s = s or b""
+    s = s.replace(b"\r", b"").replace(b"\n", b"")
     return re_base64.match(s)
 
 
