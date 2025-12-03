@@ -128,7 +128,7 @@ class FatturaPAAttachmentIn(models.Model):
             content = attach.Attachment
             _attach_dict = {
                 'name': name,
-                'datas': base64.b64encode(str(content)),
+                'datas': base64.b64encode(content),
                 'datas_fname': name,
                 'description': attach.DescrizioneAttachment or '',
                 'compression': attach.AlgoritmoCompressione or '',
