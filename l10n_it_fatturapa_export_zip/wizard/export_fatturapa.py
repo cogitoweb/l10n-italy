@@ -43,7 +43,7 @@ class WizardAccountInvoiceExport(models.TransientModel):
         attach_vals = {
             'name': self.name + '.zip',
             'datas_fname': self.name + '.zip',
-            'datas': base64.encodestring(data),
+            'datas': base64.encodebytes(data),
         }
         zip_att = self.env['ir.attachment'].create(attach_vals)
         for att in attachments:

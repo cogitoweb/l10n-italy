@@ -204,7 +204,7 @@ class MailThread(models.AbstractModel):
                             fatturapa_attachment_in.create({
                                 'name': file_name,
                                 'datas_fname': file_name,
-                                'datas': base64.encodestring(inv_file.read()),
+                                'datas': base64.encodebytes(inv_file.read()),
                                 'company_id': company_id,
                                 'e_invoice_received_date': received_date,
                             })

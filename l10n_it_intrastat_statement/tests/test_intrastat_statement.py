@@ -296,5 +296,5 @@ class TestIntrastatStatement (AccountingTestCase):
             .with_context(active_id=statement.id, sale=True) \
             .create({})
         export_wizard.act_getfile()
-        file_content = base64.decodestring(export_wizard.data)
+        file_content = base64.decodebytes(export_wizard.data)
         self.assertIn(invoice.partner_id.vat[2:], file_content)

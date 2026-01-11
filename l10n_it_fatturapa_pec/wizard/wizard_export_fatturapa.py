@@ -25,7 +25,7 @@ class WizardExportFatturapa(models.TransientModel):
         )
         fatturapaBDS.reset()
         attach.write({
-            'datas': base64.encodestring(attach_str),
+            'datas': base64.encodebytes(attach_str),
         })
 
     def exportFatturaPARegenerate(self):

@@ -113,7 +113,7 @@ class WizardExportFatturapa(models.TransientModel):
         attach_vals = {
             'name': '%s_%s.xml' % (vat, number),
             'datas_fname': '%s_%s.xml' % (vat, number),
-            'datas': base64.encodestring(attach_str),
+            'datas': base64.encodebytes(attach_str),
         }
         return attach_obj.create(attach_vals)
 
@@ -810,7 +810,7 @@ class WizardExportFatturapa(models.TransientModel):
                         file_name[:(60-len(file_extension))], file_extension])
                 AttachDoc = AllegatiType(
                     NomeAttachment=attachment_name,
-                    Attachment=base64.decodestring(doc_id.datas)
+                    Attachment=base64.decodebytes(doc_id.datas)
                 )
                 body.Allegati.append(AttachDoc)
         return True

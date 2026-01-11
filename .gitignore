@@ -57,3 +57,7 @@ docs/_build/
 
 # OSX Files
 *.DS_Store
+l10n_it_fatturapa_out_wt/tests/test_fatturapa_wt.py
+
+# VS Code
+.vscode/

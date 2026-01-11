@@ -34,7 +34,7 @@ class AccountIntrastatExportFile(models.TransientModel):
 
         filename = statement._get_file_name()
 
-        out = base64.encodestring(file.encode())
+        out = base64.encodebytes(file.encode())
 
         view = self.env['ir.model.data'].get_object_reference(
             'l10n_it_intrastat_statement',
