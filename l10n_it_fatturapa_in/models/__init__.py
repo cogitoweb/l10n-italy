@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-
-from . import attachment
+from . import precision_helper
 from . import account
-from . import partner
+from . import attachment
 from . import company
+from . import partner

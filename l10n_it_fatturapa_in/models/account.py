@@ -2,8 +2,11 @@
 
 from odoo import fields, models, api, _
 from odoo.exceptions import UserError, ValidationError
-import odoo.addons.decimal_precision as dp
 from odoo.tools import float_compare
+from .precision_helper import (
+    get_einvoice_in_quantity_precision,
+    get_einvoice_in_price_precision
+)
 
 
 class AccountInvoice(models.Model):
@@ -318,6 +321,20 @@ class AccountInvoiceLine(models.Model):
     # ]
     _inherit = "account.invoice.line"
 
+    # Override fields with dynamic precision and fallback
+    quantity = fields.Float(
+        string='Quantity',
+        digits=get_einvoice_in_quantity_precision,
+        default=1.0,
+        required=True
+    )
+
+    price_unit = fields.Float(
+        string='Unit Price',
+        digits=get_einvoice_in_price_precision,
+        required=True
+    )
+
     fatturapa_attachment_in_id = fields.Many2one(
         'fatturapa.attachment.in', 'E-bill Import File',
         readonly=True, related='invoice_id.fatturapa_attachment_in_id')
@@ -343,14 +360,14 @@ class EInvoiceLine(models.Model):
     name = fields.Char("Description", readonly=True)
     qty = fields.Float(
         "Quantity", readonly=True,
-        digits=dp.get_precision('Product Unit of Measure')
+        digits=get_einvoice_in_quantity_precision
     )
     uom = fields.Char("Unit of measure", readonly=True)
     period_start_date = fields.Date("Period Start Date", readonly=True)
     period_end_date = fields.Date("Period End Date", readonly=True)
     unit_price = fields.Float(
         "Unit Price", readonly=True,
-        digits=dp.get_precision('Product Price')
+        digits=get_einvoice_in_price_precision
     )
     discount_rise_price_ids = fields.One2many(
         'discount.rise.price', 'e_invoice_line_id',

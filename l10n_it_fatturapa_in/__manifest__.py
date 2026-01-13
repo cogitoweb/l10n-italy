@@ -21,6 +21,7 @@
         'l10n_it_withholding_tax_causali',
         ],
     "data": [
+        'data/decimal_precision_data.xml',
         'views/account_view.xml',
         'views/partner_view.xml',
         'wizard/wizard_import_fatturapa_view.xml',
