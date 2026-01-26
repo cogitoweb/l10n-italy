@@ -28,9 +28,6 @@
         <field name="mode">primary</field>
         <field name="inherit_id" ref="account.report_invoice_document"/>
         <field name="arch" type="xml">
-            <xpath expr="//div[@t-if='o.partner_id.ref']" position="attributes">
-                <attribute name="style">display: none;</attribute>
-            </xpath>
             <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')" position="replace">
                 <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">
                     Corrispettivo
