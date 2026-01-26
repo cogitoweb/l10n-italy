@@ -28,9 +28,6 @@
         <field name="mode">primary</field>
         <field name="inherit_id" ref="account.report_invoice_document"/>
         <field name="arch" type="xml">
-            <xpath expr="//div[@name='invoice_address']" position="attributes">
-                <attribute name="style">display: none;</attribute>
-            </xpath>
             <xpath expr="//div[@t-if='o.partner_id.ref']" position="attributes">
                 <attribute name="style">display: none;</attribute>
             </xpath>
