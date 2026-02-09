@@ -26,29 +26,29 @@
         <field name="name">Corrispettivi</field>
         <field name="model">account.invoice</field>
         <field name="mode">primary</field>
-        <field name="inherit_id" ref="account.report_invoice_document"/>
+        <field name="inherit_id" ref="accounting_full.full_report_invoice_document_info"/>
         <field name="arch" type="xml">
-            <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')" position="replace">
-                <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">
+            <xpath expr="//t[@t-if=&quot;o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')&quot;]" position="replace">
+                <t t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">
                     Corrispettivo
-                </span>
-            </span>
-            <span t-if="o.type == 'out_invoice' and o.state == 'draft'" position="replace">
-                <span t-if="o.type == 'out_invoice' and o.state == 'draft'">
+                </t>
+            </xpath>
+            <xpath expr="//t[@t-if=&quot;o.type == 'out_invoice' and o.state == 'draft'&quot;]" position="replace">
+                <t t-if="o.type == 'out_invoice' and o.state == 'draft'">
                     Draft Corrispettivo
-                </span>
-            </span>
-            <span t-if="o.type == 'out_invoice' and o.state == 'cancel'" position="replace">
-                <span t-if="o.type == 'out_invoice' and o.state == 'cancel'">
+                </t>
+            </xpath>
+            <xpath expr="//t[@t-if=&quot;o.type == 'out_invoice' and o.state == 'cancel'&quot;]" position="replace">
+                <t t-if="o.type == 'out_invoice' and o.state == 'cancel'">
                     Cancelled Corrispettivo
+                </t>
+            </xpath>
+            <xpath expr="//td[@class='col-xs-4'][2]/span[@t-if='o.date_invoice']" position="replace">
+                <span t-if="o.date_invoice">
+                    <small>Corrispettivo Date</small>
+                    <span t-field="o.date_invoice"/>
                 </span>
-            </span>
-            <div t-if="o.date_invoice" position="replace">
-                <div class="col-xs-2" t-if="o.date_invoice">
-                    <strong>Corrispettivo Date:</strong>
-                    <p t-field="o.date_invoice"/>
-                </div>
-            </div>
+            </xpath>
         </field>
     </record>
 </odoo>

@@ -11,7 +11,7 @@
     'website': 'https://github.com/OCA/l10n-italy/tree/10.0/'
                'l10n_it_corrispettivi',
     'license': 'LGPL-3',
-    'depends': ['account'],
+    'depends': ['accounting_full'],
     'data': [
         'views/account_report.xml',
         'views/account_view.xml'
