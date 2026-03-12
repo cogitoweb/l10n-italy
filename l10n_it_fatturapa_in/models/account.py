@@ -112,7 +112,7 @@ class AccountInvoice(models.Model):
     def e_inv_check_amount_untaxed(self):
         error_message = ''
         if (self.e_invoice_amount_untaxed and
-                float_compare(self.amount_untaxed,
+                float_compare(abs(self.amount_untaxed),
                               abs(self.e_invoice_amount_untaxed),
                               precision_rounding=self.currency_id
                               .rounding) != 0):
@@ -129,7 +129,7 @@ class AccountInvoice(models.Model):
     def e_inv_check_amount_tax(self):
         error_message = ''
         if (self.e_invoice_amount_tax and
-                float_compare(self.amount_tax,
+                float_compare(abs(self.amount_tax),
                               abs(self.e_invoice_amount_tax),
                               precision_rounding=self.currency_id
                               .rounding) != 0):
@@ -146,7 +146,7 @@ class AccountInvoice(models.Model):
     def e_inv_check_amount_total(self):
         error_message = ''
         if (self.e_invoice_amount_total and
-                float_compare(self.amount_total,
+                float_compare(abs(self.amount_total),
                               abs(self.e_invoice_amount_total),
                               precision_rounding=self.currency_id
                               .rounding) != 0):
