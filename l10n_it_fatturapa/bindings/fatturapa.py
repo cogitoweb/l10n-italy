@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import logging
+import re
 from odoo.modules.module import get_module_resource
 from lxml import etree
 
@@ -81,6 +82,10 @@ def collect_types():
 
 
 def CreateFromDocument(xml_string):
+    # xmlns:schemaLocation with a space-separated value is not a valid namespace
+    # URI and causes both lxml and the SAX fallback to fail on Python 3.12+.
+    xml_string = re.sub(
+        rb'xmlns:schemaLocation\s*=\s*"[^"]*"', b'', xml_string)
     try:
         root = etree.fromstring(xml_string)
     except Exception as e:
