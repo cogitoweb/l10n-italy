@@ -318,6 +318,12 @@ msgid "Invoice"
 msgstr "Fattura"
 
 #. module: l10n_it_fatturapa_out
+#: code:addons/l10n_it_fatturapa_out/wizard/wizard_export_fatturapa.py:544
+#, python-format
+msgid "Invoice %s does not have a fiscal document type set."
+msgstr "La fattura %s non possiede la tipologia di documento fiscale impostata."
+
+#. module: l10n_it_fatturapa_out
 #: code:addons/l10n_it_fatturapa_out/models/account.py:31
 #, python-format
 msgid "Invoice %s has XML and can't be canceled. Delete the XML before."
