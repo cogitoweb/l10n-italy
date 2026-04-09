@@ -112,12 +112,15 @@ class ReportRegistroIva(models.AbstractModel):
 
             if (
                 'receivable' in move.move_type or
-                ('payable_refund' == move.move_type and tax_amount > 0)
+                ('payable_refund' == move.move_type and set_cee_absolute_value)
             ):
                 # otherwise refund would be positive and invoices
                 # negative.
-                # We also check payable_refund as it normaly is < 0, but
-                # it can be > 0 in case of reverse charge with VAT integration
+                # We also check payable_refund only for CEE/reverse charge
+                # (set_cee_absolute_value=True), because in that case abs()
+                # forced the amount positive and we must restore the negative
+                # sign. For mixed credit notes with genuine debit lines
+                # (addebito), tax_amount is naturally positive and must stay so.
                 tax_amount = -tax_amount
 
             if is_base:
