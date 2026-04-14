@@ -538,9 +538,8 @@ msgstr "Nome Visualizzato"
 #. module: l10n_it_ddt
 #: model:ir.model.fields,field_description:l10n_it_ddt.field_res_partner_ddt_invoice_exclude
 #: model:ir.model.fields,field_description:l10n_it_ddt.field_res_users_ddt_invoice_exclude
-#, fuzzy
 msgid "Do not invoice services from DDT"
-msgstr "Fatture da DDT"
+msgstr "Non fatturare i servizi dal DDT"
 
 #. module: l10n_it_ddt
 #: code:addons/l10n_it_ddt/models/stock_picking_package_preparation.py:516

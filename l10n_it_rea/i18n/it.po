@@ -81,7 +81,6 @@ msgstr "Codice REA"
 
 #. module: l10n_it_rea
 #: model:ir.ui.view,arch_db:l10n_it_rea.view_company_form_rea
-#, fuzzy
 msgid "REA Data"
 msgstr "Dati REA"
 
@@ -94,7 +93,6 @@ msgstr "Registrazione REA"
 #: model:ir.model.fields,field_description:l10n_it_rea.field_res_company_rea_capital
 #: model:ir.model.fields,field_description:l10n_it_rea.field_res_partner_rea_capital
 #: model:ir.model.fields,field_description:l10n_it_rea.field_res_users_rea_capital
-#, fuzzy
 msgid "Share Capital"
 msgstr "Capitale sociale"
 
