@@ -126,6 +126,7 @@ def CreateFromDocument(xml_string):
                     _logger.warn(msg)
 
     # handle special cases like '<Email>contatto: AMMINISTRAZIONE@TNTITALY.IT</Email>'
+    # or multiple addresses '<Email>a@b.it; c@d.it</Email>'
     # by trying to parse the real email and change the tag content.
     for element in root.findall(".//Email"):
         valid_emails = extract_rfc2822_addresses(element.text)
@@ -134,7 +135,18 @@ def CreateFromDocument(xml_string):
             msg = 'Removed invalid email <%s> from node %s' % (element.text, element_path)
             problems.append(msg)
             _logger.warn(msg)
-            element.text = valid_emails[0]
+            element.text = valid_emails[0].strip().rstrip(';').strip()
+
+    # fix trailing spaces/semicolons in <PECDestinatario/> (uses strict EmailType)
+    for element in root.findall(".//PECDestinatario"):
+        if element.text:
+            clean = element.text.strip().rstrip(';').strip()
+            if clean != element.text:
+                element_path = tree.getpath(element)
+                msg = 'Cleaned invalid PECDestinatario <%s> from node %s' % (element.text, element_path)
+                problems.append(msg)
+                _logger.warn(msg)
+                element.text = clean
 
     fatturapa = _CreateFromDocument(etree.tostring(root))
     setattr(fatturapa, '_xmldoctor', problems)
