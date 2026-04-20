@@ -119,10 +119,23 @@ class AccountVatPeriodEndStatement(models.Model):
                     # if line.account_id.id == authority_vat_account_id:
                     residual += line.amount_residual
                 statement.residual = abs(residual)
-                if float_is_zero(statement.residual, precision_digits=precision) and is_debit:
+
+            # to avoid reconciled = True when the document is in draft state
+            if statement.state == 'draft':
+                statement.reconciled = False
+                continue
+
+            # if authority_vat_amount >= 0 --> debit
+            is_vat_payable = statement.authority_vat_amount >= 0
+
+            if is_vat_payable:
+                if float_is_zero(statement.residual, precision):
                     statement.reconciled = True
                 else:
                     statement.reconciled = False
+            else:
+                # Always False when credit
+                statement.reconciled = False
 
     @api.depends('move_id.line_ids.amount_residual')
     @api.multi
@@ -547,8 +560,10 @@ class AccountVatPeriodEndStatement(models.Model):
             if prev_statements:
                 prev_statement = prev_statements[0]
                 if (
-                    prev_statement.residual > 0 and
-                    prev_statement.authority_vat_amount > 0
+                    prev_statement.residual >= 0 and
+                    prev_statement.authority_vat_amount >= 0 and
+                    prev_statement.state=='draft' and
+                    prev_statement.reconciled == False
                 ):
                     statement.write(
                         {'previous_debit_vat_amount': prev_statement.residual})
