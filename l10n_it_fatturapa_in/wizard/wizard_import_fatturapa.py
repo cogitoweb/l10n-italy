@@ -84,6 +84,10 @@ class WizardImportFatturapa(models.TransientModel):
                 raise UserError(
                     _("File %s is linked to bills yet.")
                     % fatturapa_attachment.name)
+            if fatturapa_attachment.is_self_invoice:
+                 raise UserError(
+                    _("File %s is a self invoice. Do not import it")
+                    % fatturapa_attachment.name)
             partners |= fatturapa_attachment.xml_supplier_id
             if len(partners) == 1:
                 res['e_invoice_detail_level'] = (

@@ -594,6 +594,12 @@ msgid "File is linked to bills yet."
 msgstr "Il file è già collegato a delle fatture."
 
 #. module: l10n_it_fatturapa_in
+#: code:addons/l10n_it_fatturapa_in/wizard/wizard_import_fatturapa.py:89
+#, python-format
+msgid "File %s is a self invoice. Do not import it"
+msgstr "Il file %s è relativo ad una autofattura. Non puoi importarlo!"
+
+#. module: l10n_it_fatturapa_in
 #: model:ir.model.fields,field_description:l10n_it_fatturapa_in.field_fatturapa_attachment_in__datas_fname
 msgid "Filename"
 msgstr "Nome file"
