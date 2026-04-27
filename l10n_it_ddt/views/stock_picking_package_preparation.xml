@@ -9,19 +9,19 @@
             <field name="model">stock.picking.package.preparation</field>
             <field name="inherit_id" ref="stock_picking_package_preparation_line.sppp_line_stock_picking_package_preparation_form"/>
             <field name="arch" type="xml">
-            
+
                 <xpath expr="//field[@name='line_ids']/tree/field[@name='product_uom_id']" position="after">
                    <field name="price_unit"/>
                    <field name="discount"/>
                    <field name="tax_ids" widget="many2many_tags" domain="[('type_tax_use','=','sale'),('company_id','=',parent.company_id)]"/>
                 </xpath>
-                
+
                 <xpath expr="//field[@name='line_ids']/form//field[@name='product_uom_id']" position="after">
                    <field name="price_unit"/>
                    <field name="discount"/>
                    <field name="tax_ids" widget="many2many_tags" domain="[('type_tax_use','=','sale'),('company_id','=',parent.company_id)]"/>
                 </xpath>
-                
+
             </field>
         </record>
 
@@ -125,7 +125,7 @@
                                attrs="{'required':[('ddt_type_id', '!=', False)]}"/>
                         <field name="transportation_method_id"
                                attrs="{'required':[('ddt_type_id', '!=', False)]}"/>
-                        <field name="carrier_id"/>
+                        <field name="carrier_id" options="{'no_open': True, 'no_create': True}"/>
                         <field name="parcels"
                                attrs="{'required':[('ddt_type_id', '!=', False)]}"/>
                         <field name="volume"/>
@@ -159,7 +159,7 @@
       parent="stock.menu_stock_warehouse_mgmt"
       name="DDT"
       sequence="3"/>
-      
+
 
     <!-- Invoicing data -->
 
@@ -178,7 +178,7 @@
                 </xpath>
             </field>
      </record>
-     
+
      <record id="stock_picking_package_preparation_invoicing_tree" model="ir.ui.view">
             <field name="name">stock.picking.package.preparation.invoicing.tree</field>
             <field name="model">stock.picking.package.preparation</field>
@@ -224,6 +224,7 @@
                         <field name="default_goods_description_id"/>
                         <field name="default_transportation_reason_id"/>
                         <field name="default_transportation_method_id"/>
+                        <field name="default_carrier_id" options="{'no_open': True, 'no_create': True}"/>
                     </group>
                 </sheet>
             </form>

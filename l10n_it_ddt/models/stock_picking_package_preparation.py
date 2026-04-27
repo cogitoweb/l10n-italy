@@ -75,6 +75,9 @@ class StockDdtType(models.Model):
     default_transportation_method_id = fields.Many2one(
         'stock.picking.transportation_method',
         string='Default Method of Transportation')
+    default_carrier_id = fields.Many2one(
+        'res.partner', string='Default Carrier',
+        domain=[('parent_id', '=', False)])
     company_id = fields.Many2one(
         comodel_name='res.company', string='Company',
         default=lambda self: self.env.user.company_id.id)

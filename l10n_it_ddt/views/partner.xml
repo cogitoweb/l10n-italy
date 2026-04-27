@@ -16,26 +16,27 @@
                             widget="selection"/>
                         <field name="transportation_method_id"
                             widget="selection"/>
+                        <field name="carrier_id" options="{'no_open': True, 'no_create': True}" />
                         <field name="ddt_invoicing_group"/>
-                        <field name="ddt_code_group" 
+                        <field name="ddt_code_group"
                             attrs="{'invisible': [('ddt_invoicing_group','!=','code_group')],
                                     'required': [('ddt_invoicing_group','=','code_group')]} "/>
                         <field name="ddt_show_price"/>
                         <field name="ddt_invoice_exclude"/>
                     </group>
                 </xpath>
-                
+
                 <xpath expr="//div[@name='div_address']/../../.." position="after">
-                    <group string="DDT info" name="ddt_info" 
+                    <group string="DDT info" name="ddt_info"
                             attrs="{'invisible': [('type','not in', ['invoice', 'delivery'])]}">
                         <field name="ddt_invoicing_group"/>
-                        <field name="ddt_code_group" 
+                        <field name="ddt_code_group"
                             attrs="{'invisible': [('ddt_invoicing_group','!=','code_group')],
                                     'required': [('ddt_invoicing_group','=','code_group')]} "/>
                         <field name="ddt_show_price"/>
                     </group>
                 </xpath>
-                
+
             </field>
         </record>
 

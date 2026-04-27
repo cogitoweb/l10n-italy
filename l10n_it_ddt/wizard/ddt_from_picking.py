@@ -183,6 +183,14 @@ class DdTFromPickings(models.TransientModel):
                 carrier_id = picking.sale_id.ddt_carrier_id
                 values['carrier_id'] = (
                     carrier_id.id)
+            elif picking.partner_id and picking.partner_id.carrier_id:
+                carrier_id = picking.partner_id.carrier_id
+                values['carrier_id'] = (
+                    carrier_id.id)
+            elif picking.ddt_type and picking.ddt_type.default_carrier_id:
+                carrier_id = picking.ddt_type.default_carrier_id
+                values['carrier_id'] = (
+                    carrier_id.id)
 
         if len(self.picking_ids) == 1 and self.picking_ids[0].sale_id:
             # otherwise weights and volume should be different

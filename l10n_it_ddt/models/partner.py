@@ -27,6 +27,9 @@ class ResPartner(models.Model):
     transportation_method_id = fields.Many2one(
         'stock.picking.transportation_method',
         string='Method of Transportation')
+    carrier_id = fields.Many2one(
+        'res.partner', string='Carrier',
+        domain=[('parent_id', '=', False)])
     ddt_invoicing_group = fields.Selection(
         [('nothing', 'One DDT - One Invoice'),
          ('billing_partner', 'Billing Partner'),
