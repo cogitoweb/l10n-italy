@@ -6,6 +6,7 @@ from odoo.tools import float_is_zero, float_round
 from odoo.tools.translate import _
 from odoo.exceptions import UserError
 from datetime import datetime
+import pytz
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT as DATETIME_FORMAT
 
 from odoo.addons.l10n_it_fatturapa.bindings import fatturapa
@@ -895,6 +896,11 @@ class WizardImportFatturapa(models.TransientModel):
         e_invoice_received_date = (
             fatturapa_attachment.e_invoice_received_date or
             fatturapa_attachment.create_date)
+        # fix timezone gap between datetime and date
+        company_tz = pytz.timezone(self.env.user.company_id.partner_id.tz or 'Europe/Rome')
+        if isinstance(e_invoice_received_date, str):
+            e_invoice_received_date = datetime.strptime(e_invoice_received_date, DATETIME_FORMAT)
+        e_invoice_received_date = pytz.UTC.localize(e_invoice_received_date).astimezone(company_tz).date()
         e_invoice_date = FatturaBody.DatiGenerali.DatiGeneraliDocumento.Data.date()
 
         invoice_data = {
@@ -1132,7 +1138,7 @@ class WizardImportFatturapa(models.TransientModel):
             if line_vals:
                 for line in line_vals:
                     self.env['account.invoice.line'].create(line)
-    
+
     def set_registration_date(self, FatturaBody, invoice_data, e_invoice_received_date, e_invoice_date):
 
         company = self.env.user.company_id

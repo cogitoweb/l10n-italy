@@ -540,6 +540,10 @@ class WizardExportFatturapa(models.TransientModel):
             raise UserError(
                 _('Invoice does not have a number.'))
 
+        if not invoice.fiscal_document_type_id:
+            raise UserError(_(
+                'Invoice %s does not have a fiscal document type set.'
+            ) % invoice.display_name)
         TipoDocumento = invoice.fiscal_document_type_id.code
         ImportoTotaleDocumento = invoice.amount_total
         if invoice.split_payment:
