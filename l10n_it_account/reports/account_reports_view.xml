@@ -114,6 +114,25 @@
                                 y[j].textContent = vars[x[i]];
                             }
                         }
+                        var operations = {
+                            'not-first-page': function (elt) {
+                                elt.style.visibility = (vars.page === vars.frompage) ? "hidden" : "visible";
+                            },
+                            'not-last-page': function (elt) {
+                                elt.style.visibility = (vars.page === vars.topage) ? "hidden" : "visible";
+                            },
+                            'first-page': function (elt) {
+                                elt.style.visibility = (vars.page === vars.frompage) ? "visible" : "hidden";
+                            },
+                            'last-page': function (elt) {
+                                elt.style.visibility = (vars.page === vars.topage) ? "visible" : "hidden";
+                            },
+                        };
+                        for (var klass in operations) {
+                            var y = document.getElementsByClassName(klass);
+                            for (var j=0; j&lt;y.length; ++j)
+                                operations[klass](y[j]);
+                        }
                     }
             </script>
             </xpath>
