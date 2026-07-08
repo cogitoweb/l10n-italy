@@ -128,6 +128,7 @@ class StockPickingPackagePreparation(models.Model):
         help="This depends on 'To be Invoiced' field of the Reason for "
              "Transportation of this DDT")
     show_price = fields.Boolean(string='Show prices on report')
+    show_tax = fields.Boolean(string='Show tax on report')
     weight_manual = fields.Float(
         string="Force Net Weight",
         help="Fill this field with the value you want to be used as weight. "
@@ -169,6 +170,7 @@ class StockPickingPackagePreparation(models.Model):
                 if self.partner_id.transportation_method_id
                 else self.ddt_type_id.default_transportation_method_id)
             self.show_price = self.partner_id.ddt_show_price
+            self.show_tax = self.partner_id.ddt_show_tax
 
     @api.model
     def check_linked_picking(self, picking):
