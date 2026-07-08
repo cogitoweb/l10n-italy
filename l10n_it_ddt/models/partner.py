@@ -45,3 +45,8 @@ class ResPartner(models.Model):
         help="If flagged services will not be automatically "
              "invoiced from DDT. If set on the partner, this parameter will"
              "be automatically applied to Sale Orders.")
+    ddt_show_tax = fields.Boolean(
+        string='DDT show tax',
+        default=False,
+        help='Show tax in ddt report'
+    )
