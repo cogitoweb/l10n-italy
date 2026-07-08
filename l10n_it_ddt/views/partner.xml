@@ -23,6 +23,8 @@
                                     'required': [('ddt_invoicing_group','=','code_group')]} "/>
                         <field name="ddt_show_price"/>
                         <field name="ddt_invoice_exclude"/>
+                        <field name="ddt_show_tax"
+                             attrs="{'invisible': [('ddt_show_price','=',False)]}"/>
                     </group>
                 </xpath>
 
