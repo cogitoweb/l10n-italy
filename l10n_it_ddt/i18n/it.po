@@ -420,6 +420,12 @@ msgid "DDT show prices"
 msgstr "DDT mostra prezzi"
 
 #. module: l10n_it_ddt
+#: model:ir.model.fields,field_description:l10n_it_ddt.field_res_partner_ddt_show_tax
+#: model:ir.model.fields,field_description:l10n_it_ddt.field_res_users_ddt_show_tax
+msgid "DDT show tax"
+msgstr "DDT mostra IVA"
+
+#. module: l10n_it_ddt
 #: model:ir.model.fields,field_description:l10n_it_ddt.field_sale_order_ddt_count
 msgid "DDTs"
 msgstr ""
@@ -1089,6 +1095,17 @@ msgstr "Mostra prezzi e sconti sulla stampa del ddt"
 #: model:ir.model.fields,field_description:l10n_it_ddt.field_stock_picking_package_preparation_show_price
 msgid "Show prices on report"
 msgstr "Mostra prezzi su report"
+
+#. module: l10n_it_ddt
+#: model:ir.model.fields,field_description:l10n_it_ddt.field_stock_picking_package_preparation_show_tax
+msgid "Show tax on report"
+msgstr "Mostra IVA su report"
+
+#. module: l10n_it_ddt
+#: model:ir.model.fields,help:l10n_it_ddt.field_res_partner_ddt_show_tax
+#: model:ir.model.fields,help:l10n_it_ddt.field_res_users_ddt_show_tax
+msgid "Show tax in ddt report"
+msgstr "Mostra IVA sulla stampa del ddt"
 
 #. module: l10n_it_ddt
 #: model:ir.ui.view,arch_db:l10n_it_ddt.delivery_data
