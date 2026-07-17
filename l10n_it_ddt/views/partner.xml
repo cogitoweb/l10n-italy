@@ -22,10 +22,10 @@
                             attrs="{'invisible': [('ddt_invoicing_group','!=','code_group')],
                                     'required': [('ddt_invoicing_group','=','code_group')]} "/>
                         <field name="ddt_show_price"/>
-                        <field name="ddt_invoice_exclude"/>
                         <field name="ddt_show_tax"
                              attrs="{'invisible': [('ddt_show_price','=',False)],
                                      'required': [('ddt_show_price','=', True)]}"/>
+                        <field name="ddt_invoice_exclude"/>
                     </group>
                 </xpath>
 
